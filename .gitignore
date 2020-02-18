@@ -28,3 +28,9 @@ ExportedObj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+MetroidvaniaM7_ISIB/Assembly-CSharp.csproj
+*.cache
