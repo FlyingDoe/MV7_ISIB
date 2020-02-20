@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Global game manager. Manages the saving and loading of save data, keeps track of unlocked skill/teleporters/quests.
+/// </summary>
 public class GlobalSettings : MonoBehaviour
 {
     public static GlobalSettings Instance { get; private set; }
 
-    private static string _gameDataFileName = "data.json";
+    private const string _gameDataFileName = "data.json";
 
     private SaveGame sG;
 
@@ -24,6 +27,7 @@ public class GlobalSettings : MonoBehaviour
         CheckInstance();
         CheckIfSaveDataExists();
 
+        // DEBUGMODE
         UnlockEverything();
     }
 
@@ -78,6 +82,50 @@ public class GlobalSettings : MonoBehaviour
 
     #endregion
 
+    // =============================================================================
+    #region GET INFOS FUNCTIONS
+
+    /// <summary>
+    /// Asks the GameManager if the player has unlocked a skill.
+    /// </summary>
+    /// <param name="skillType"></param>
+    /// <returns></returns>
+    public bool HasSkill(SkillType skillType)
+    {
+        return sG.skills[(int)skillType];
+    }
+
+    /// <summary>
+    /// Asks the GameManager if the player has unlocked a teleporter.
+    /// </summary>
+    /// <param name="teleporterType"></param>
+    /// <returns></returns>
+    public bool HasTeleporter(TprtrType teleporterType)
+    {
+        return sG.tprtrs[(int)teleporterType];
+    }
+
+    /// <summary>
+    /// Asks the GameManager if the player has visited a map.
+    /// </summary>
+    /// <param name="map"></param>
+    /// <returns></returns>
+    public bool HasVisitedMap(MapznType map)
+    {
+        return sG.mapzns[(int)map];
+    }
+
+    /// <summary>
+    /// Asks the GameManager if the player has finished a quest.
+    /// </summary>
+    /// <param name="quest"></param>
+    /// <returns></returns>
+    public bool HasFinishedQuest(QuestType quest)
+    {
+        return sG.quests[(int)quest];
+    }
+
+    #endregion
     // =============================================================================
 
     #region UNLOCK FUNCTIONS
@@ -135,6 +183,12 @@ public class GlobalSettings : MonoBehaviour
         }
         Save();
     }
+    #endregion
+
+    // =============================================================================
+
+    #region OTHER FUNCTIONS
+
     #endregion
 
 }
