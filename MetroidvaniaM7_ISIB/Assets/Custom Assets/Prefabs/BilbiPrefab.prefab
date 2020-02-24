@@ -2041,14 +2041,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083812963635069709}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.1412115, y: 5.222556, z: -10.470739}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100.00018, z: 100.00018}
   m_Children:
   - {fileID: 2083812963635240687}
   m_Father: {fileID: 8852007225472278345}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 90, z: 0}
 --- !u!1 &2083812963635069711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,13 +2073,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083812963635069711}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1797676, y: 6.2307634, z: -10.864786}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35232276, y: 0.35232297, z: 0.35232297}
   m_Children: []
   m_Father: {fileID: 8852007225472278345}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!137 &2083812963621408285
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -3451,7 +3451,7 @@ GameObject:
   - component: {fileID: 8852007225472278345}
   - component: {fileID: 8852007225472278344}
   m_Layer: 0
-  m_Name: Player
+  m_Name: BilbiPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
