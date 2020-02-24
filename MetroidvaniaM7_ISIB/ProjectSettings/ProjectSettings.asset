@@ -623,10 +623,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: d4845c49-e0fb-491f-b326-2e42831a3209
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: MetroidvaniaM7_ISIB
+  organizationId: flyingdoe
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
