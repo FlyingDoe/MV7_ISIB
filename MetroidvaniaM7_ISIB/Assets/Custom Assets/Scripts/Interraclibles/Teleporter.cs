@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : Interractible
+public class Teleporter : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    //Transform player;
+
+    public override void Interact()
     {
-        
+        //base.Interact();
+        teleport();
+       
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void teleport()
     {
-        
+
     }
 }
