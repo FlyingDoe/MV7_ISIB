@@ -1,16 +1,135 @@
 fileFormatVersion: 2
 guid: 4a760d06c14f5a9498f44b62e3366be1
 ModelImporter:
-  serializedVersion: 19300
-  internalIDToNameTable: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm.L
+    100002: Arm.R
+    100004: Back.000
+    100006: Back.001
+    100008: Back.002
+    100010: Back.003
+    100012: Belly
+    100014: //RootNode
+    100016: Bilby_Arma_Obj
+    100018: Bilby_Obj
+    100020: CtrlRot_Ears
+    100022: Ear.000.L
+    100024: Ear.000.R
+    100026: Ear.001.L
+    100028: Ear.001.R
+    100030: Ear.002.L
+    100032: Ear.002.R
+    100034: Ear.003.L
+    100036: Ear.003.R
+    100038: Ear.004.L
+    100040: Ear.004.R
+    100042: Fingers.L
+    100044: Fingers.R
+    100046: Foot-ish.L
+    100048: Foot-ish.R
+    100050: Forearm.L
+    100052: Forearm.R
+    100054: Foreleg-ish.L
+    100056: Foreleg-ish.R
+    100058: Hand.L
+    100060: Hand.R
+    100062: Head
+    100064: Hips
+    100066: IKDriv_TailIK
+    100068: Jaw
+    100070: Leg.L
+    100072: Leg.R
+    100074: Neck.000
+    100076: Neck.001
+    100078: Nose
+    100080: ROOT
+    100082: Shoulder.L
+    100084: Shoulder.R
+    100086: Tail.000
+    100088: Tail.001
+    100090: Tail.002
+    100092: Tail.003
+    100094: Tail.004
+    100096: Tail.005
+    100098: Tail.006
+    100100: Tail.007
+    100102: Thigh.L
+    100104: Thigh.R
+    100106: Toes.L
+    100108: Toes.R
+    100110: UBERROOT
+    100112: Wrist.L
+    100114: Wrist.R
+    400000: Arm.L
+    400002: Arm.R
+    400004: Back.000
+    400006: Back.001
+    400008: Back.002
+    400010: Back.003
+    400012: Belly
+    400014: //RootNode
+    400016: Bilby_Arma_Obj
+    400018: Bilby_Obj
+    400020: CtrlRot_Ears
+    400022: Ear.000.L
+    400024: Ear.000.R
+    400026: Ear.001.L
+    400028: Ear.001.R
+    400030: Ear.002.L
+    400032: Ear.002.R
+    400034: Ear.003.L
+    400036: Ear.003.R
+    400038: Ear.004.L
+    400040: Ear.004.R
+    400042: Fingers.L
+    400044: Fingers.R
+    400046: Foot-ish.L
+    400048: Foot-ish.R
+    400050: Forearm.L
+    400052: Forearm.R
+    400054: Foreleg-ish.L
+    400056: Foreleg-ish.R
+    400058: Hand.L
+    400060: Hand.R
+    400062: Head
+    400064: Hips
+    400066: IKDriv_TailIK
+    400068: Jaw
+    400070: Leg.L
+    400072: Leg.R
+    400074: Neck.000
+    400076: Neck.001
+    400078: Nose
+    400080: ROOT
+    400082: Shoulder.L
+    400084: Shoulder.R
+    400086: Tail.000
+    400088: Tail.001
+    400090: Tail.002
+    400092: Tail.003
+    400094: Tail.004
+    400096: Tail.005
+    400098: Tail.006
+    400100: Tail.007
+    400102: Thigh.L
+    400104: Thigh.R
+    400106: Toes.L
+    400108: Toes.R
+    400110: UBERROOT
+    400112: Wrist.L
+    400114: Wrist.R
+    4300000: Bilby_Obj
+    9500000: //RootNode
+    13700000: Bilby_Obj
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bilby_Mat
-    second: {fileID: 2100000, guid: 05d2f96bd2e9c584ca2d65ed1d0d3040, type: 2}
+    second: {fileID: 2100000, guid: b26651dc083a57d40809de66572db27f, type: 2}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -39,11 +158,10 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -51,19 +169,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -72,10 +189,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -85,16 +202,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

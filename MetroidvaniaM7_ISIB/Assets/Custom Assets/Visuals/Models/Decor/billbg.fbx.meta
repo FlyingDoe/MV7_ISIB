@@ -1,11 +1,69 @@
 fileFormatVersion: 2
 guid: d82e2b4a15487a64d8e43a99680f19c1
 ModelImporter:
-  serializedVersion: 19300
-  internalIDToNameTable: []
-  externalObjects: {}
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: angleSmoother_001_Obj
+    100002: //RootNode
+    100004: Obstacle_001_Obj
+    100006: Obstacle_002_Obj
+    100008: Obstacle_003_Obj
+    100010: Obstacle_004_Obj
+    100012: Path_001_Obj
+    100014: Path_002_Obj
+    100016: Platform_001_Obj
+    400000: angleSmoother_001_Obj
+    400002: //RootNode
+    400004: Obstacle_001_Obj
+    400006: Obstacle_002_Obj
+    400008: Obstacle_003_Obj
+    400010: Obstacle_004_Obj
+    400012: Path_001_Obj
+    400014: Path_002_Obj
+    400016: Platform_001_Obj
+    2300000: angleSmoother_001_Obj
+    2300002: Obstacle_001_Obj
+    2300004: Obstacle_002_Obj
+    2300006: Obstacle_003_Obj
+    2300008: Obstacle_004_Obj
+    2300010: Path_001_Obj
+    2300012: Path_002_Obj
+    2300014: Platform_001_Obj
+    3300000: angleSmoother_001_Obj
+    3300002: Obstacle_001_Obj
+    3300004: Obstacle_002_Obj
+    3300006: Obstacle_003_Obj
+    3300008: Obstacle_004_Obj
+    3300010: Path_001_Obj
+    3300012: Path_002_Obj
+    3300014: Platform_001_Obj
+    4300000: Obstacle_003_Obj
+    4300002: Obstacle_004_Obj
+    4300004: Path_002_Obj
+    4300006: Path_001_Obj
+    4300008: Obstacle_001_Obj
+    4300010: Obstacle_002_Obj
+    4300012: Platform_001_Obj
+    4300014: angleSmoother_001_Obj
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 3059cd3771af30c4a890d1301882d865, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 52784ec22df293547a3bbc45b387df65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 1dd1de3485ae8b847947fc7f65ad7db3, type: 2}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -38,7 +96,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -46,19 +103,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -67,10 +123,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -80,16 +136,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
