@@ -13,6 +13,7 @@ public class PlayerBehavior : CharacterBehavior
     public Sprite emptyHeart;
 
     private float horizontalMovement;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,8 @@ public class PlayerBehavior : CharacterBehavior
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("Jump")) //Project settings input
+        
+        if (Input.GetButtonDown("Jump") && isGrounded) //Project settings input
         {
             PlayerRB.AddForce(Vector3.up * JumpPower);
             Debug.Log("Jump");
@@ -39,7 +40,7 @@ public class PlayerBehavior : CharacterBehavior
             horizontalMovement = Input.GetAxisRaw("Horizontal") * MoveSpeed;
             //PlayerRB.velocity = new Vector3(horizontalMovement,0,0);
             Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
-            transform.Translate(horizontalMovement*Time.deltaTime,0,0);
+            transform.Translate(horizontalMovement * Time.deltaTime, 0, 0);
         }
 
         // PARTIE HEALTHPOINT A BOUGER ===============================================================
@@ -65,7 +66,31 @@ public class PlayerBehavior : CharacterBehavior
             }
 
         }
-        // PARTIE HEALTHPOINT A BOUGER ===============================================================
-
     }
+    // PARTIE HEALTHPOINT A BOUGER ===============================================================
+
+    private void OnTriggerEnter(Collider collider)
+    {
+    Debug.Log("Toucher");
+        if (collider.tag == "Ennemy")
+        {
+            Hp = Hp - 1;
+        }
+        if (collider.tag == "Ground")
+        {
+        isGrounded = true;
+        }
+    }
+
+ 
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+    }
+
+
+
 }
