@@ -144,9 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08f763cc5efd754d99a3db31455f67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  isInteractable: 1
-  isFocus: 1
 --- !u!135 &153459335
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -317,9 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b457993c0492544ba855f4dda777d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s: {fileID: 0}
-  c: {fileID: 8300000, guid: 3cc2616bc74fc0e469d52cf2b13894b2, type: 3}
-  BPM: 100
+  BPM: 70
+  mixer: {fileID: 0}
 --- !u!4 &681246009
 Transform:
   m_ObjectHideFlags: 0
@@ -553,9 +549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345cf231771581e4aa9055fd66534a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  isInteractable: 0
-  isFocus: 0
 --- !u!65 &1215282495
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ using System;
 
 public class AmbienMusicManager : MonoBehaviour
 {
-    public AudioSource s;
-    public AudioClip c;
     public double BPM = 100;
     public AudioMixer mixer;
 
@@ -18,7 +16,7 @@ public class AmbienMusicManager : MonoBehaviour
     private Sound._tag currentMood = Sound._tag.CALM;
     private tagFlag myTagFlag = tagFlag.MODIFIED;
 
-    private AudioSource musicAudioSource;
+    private List<AudioSource> musicAudioSources = new List<AudioSource>();
     
 
 
@@ -27,19 +25,27 @@ public class AmbienMusicManager : MonoBehaviour
     private List<Sound> backGroundSound = new List<Sound>();
     private List<Sound> soundsWhoMatchTheCurrentMood = new List<Sound>();
 
+    private int audioSourceIndex;
+    private int audioSourcePlayIndex;
+
     void Awake()
     {
         //SETTING MUSIC BAR LENGHT
-        double beatLength = 60.0 / 100.0;
-        timerValue = (float)(beatLength * 4);
+        double beatLength = 60.0 / BPM;
+        timerValue = (float)(beatLength * 32);
         timer = timerValue;
 
         //Getting the mixer 
         mixer = Resources.Load<AudioMixer>("mixer");
 
         //CREATING THE AUDIO SOURCE 
-        musicAudioSource = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-        musicAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("BACKGROUND MUSIC")[0];
+        for (int i = 0; i < 2; i++)
+        {
+            Debug.Log("CAMERA");
+            musicAudioSources.Add(GameObject.FindObjectOfType<Camera>().gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
+            
+        }
+        musicAudioSources[0].outputAudioMixerGroup = mixer.FindMatchingGroups("BACKGROUND MUSIC")[0];
 
         //LOADING ALL MUSIC FILES IN THE DIRECTORY
         DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/Custom Assets/Audio/Music/Resources");
@@ -59,7 +65,8 @@ public class AmbienMusicManager : MonoBehaviour
 
         foreach (Sound _sound in backGroundSound)
         {
-            musicAudioSource.clip = _sound.AudioClip;
+            musicAudioSources[audioSourceIndex%2].clip = _sound.AudioClip;
+            audioSourceIndex++;
             Debug.Log("MUSIC" + _sound.AudioClip);
         }
         playNextBar();
@@ -78,7 +85,9 @@ public class AmbienMusicManager : MonoBehaviour
         {
             timer = timerValue;
             playNextBar();
-            musicAudioSource.Play();
+            musicAudioSources[audioSourcePlayIndex%2].Play();
+            Debug.Log(audioSourcePlayIndex % 2);
+            audioSourcePlayIndex++;
         }
     }
 
