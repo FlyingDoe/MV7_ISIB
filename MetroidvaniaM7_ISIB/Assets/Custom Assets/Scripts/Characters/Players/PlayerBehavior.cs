@@ -22,7 +22,9 @@ public class PlayerBehavior : CharacterBehavior
         Hp = numOfHearts -1;
         MoveSpeed = 10.0f;
         JumpPower = 500.0f;
-        
+        AttackPoint = 1;
+
+
     }
 
     // Update is called once per frame
