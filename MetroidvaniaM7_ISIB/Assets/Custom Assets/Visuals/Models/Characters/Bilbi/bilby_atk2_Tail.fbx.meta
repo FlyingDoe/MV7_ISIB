@@ -1,17 +1,11 @@
 fileFormatVersion: 2
-guid: d4040b2dba113934b9520f581ab7ce57
+guid: 360e5e07c2d749747a8f8b2cf3926cb6
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: 2178904282696074914
-    second: atk1_bite
-  - first:
-      74: 5178494157099411148
-    second: Bilby_atk1_bite
-  - first:
-      74: -5361696991865984108
-    second: Bilby_smell
+      74: 1171155854050149889
+    second: Bilby_atk2_tail
   externalObjects: {}
   materials:
     materialImportMode: 1

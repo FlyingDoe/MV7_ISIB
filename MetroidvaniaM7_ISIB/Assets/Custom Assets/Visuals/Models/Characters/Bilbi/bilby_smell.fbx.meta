@@ -6,6 +6,24 @@ ModelImporter:
   - first:
       74: -5361696991865984108
     second: Bilby_smell
+  - first:
+      74: 7937989778454058599
+    second: Bilby_idleSit
+  - first:
+      74: 2521461634351809413
+    second: Bilby_idleSit.002
+  - first:
+      74: -5749529660663715918
+    second: Bilby_idleSit.001
+  - first:
+      74: 2683089826513189635
+    second: Meta
+  - first:
+      74: 8916990181398522214
+    second: Meta.001
+  - first:
+      74: 5968173774061970311
+    second: Meta.002
   externalObjects: {}
   materials:
     materialImportMode: 0
