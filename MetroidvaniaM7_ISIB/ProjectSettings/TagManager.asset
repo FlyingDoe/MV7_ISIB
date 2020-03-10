@@ -8,6 +8,7 @@ TagManager:
   - EnemySpawner
   - ObjectSpawner
   - Ground
+  - dmg
   layers:
   - Default
   - TransparentFX

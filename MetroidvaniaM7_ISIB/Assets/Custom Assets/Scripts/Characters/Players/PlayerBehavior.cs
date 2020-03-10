@@ -10,6 +10,8 @@ public class PlayerBehavior : CharacterBehavior
     [SerializeField] new float JumpPower;
     [SerializeField] new float MoveSpeed;
     [SerializeField] float dashSpeed;
+    [SerializeField] Collider biteCollider;
+    [SerializeField] Collider headCollider;
 
     public Image[] Hearts;
     public Sprite fullHeart;
@@ -18,7 +20,10 @@ public class PlayerBehavior : CharacterBehavior
     public float fallMultiplier = 2.5f;
     public float speedJumpMultiplier = 20.0f;
     public float dashTime;
+    public float timeCouldownDash;
+    public float maxDurationBite;
 
+    private float durationBite;
     private float startDashTime;
     private int dashDirection;
     private float horizontalMovement;
@@ -30,13 +35,14 @@ public class PlayerBehavior : CharacterBehavior
     {
         MaxHp = numOfHearts;
         Hp = numOfHearts -1;
-        AttackPoint = 1;
         state = "IDLE";
         dashDirection = 6;
+        timeCouldownDash = 4;
     }
 
     private void FixedUpdate()
     {
+        timeCouldownDash += Time.deltaTime;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);
         if (isGrounded && state != "DASH")                                      //VOIR LA BONNE DISTANCE
         {
@@ -75,12 +81,20 @@ public class PlayerBehavior : CharacterBehavior
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
                 }
 
-                if (Input.GetButtonDown("Dash")) //Project settings input
+                if (Input.GetButtonDown("Dash") && timeCouldownDash >= 4) //Project settings input
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
                     Debug.Log("DASH Input Idle");
                     startDashTime = 0;
+                }
+
+                if (Input.GetButtonDown("AttackMelee"))
+                {
+                    biteCollider.enabled = true;
+                    headCollider.enabled = false;
+                    durationBite = 0;
+                    state = "ATK_MELEE";
                 }
                 break;
 
@@ -100,12 +114,20 @@ public class PlayerBehavior : CharacterBehavior
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
                 }
 
-                if (Input.GetButtonDown("Dash")) //Project settings input
+                if (Input.GetButtonDown("Dash") && timeCouldownDash >= 4) //Project settings input
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
                     Debug.Log("Start DASH Input Jump");
                     startDashTime = 0;
+                }
+
+                if (Input.GetButtonDown("AttackMelee"))
+                {
+                    biteCollider.enabled = true;
+                    headCollider.enabled = false;
+                    durationBite = 0;
+                    state = "ATK_MELEE";
                 }
 
                 break;
@@ -118,20 +140,38 @@ public class PlayerBehavior : CharacterBehavior
                     Debug.Log("DASH");
                 } else { 
                 endDash(dashDirection);
-                    isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
-                    if (isGrounded)                                      
-                    {
-                        state = "IDLE";
-                    } else
-                    {
-                        state = "JUMP";
-                    }                   
+                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
+                if (isGrounded)                                      
+                {
+                    state = "IDLE";
+                } else
+                {
+                    state = "JUMP";
+                }
+                timeCouldownDash = 0;
                 Debug.Log("Stop Dash");
                 }
 
                 break;
 
             case "ATK_MELEE":
+                durationBite += Time.deltaTime;
+                if (durationBite > maxDurationBite)
+                {
+                    biteCollider.enabled = false;
+                    headCollider.enabled = true;                
+                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
+                if (isGrounded)
+                {
+                    state = "IDLE";
+                }
+                else
+                {
+                    state = "JUMP";
+                }
+                Debug.Log("Stop AttackBite");
+                }
+
 
                 break;
 
@@ -142,7 +182,7 @@ public class PlayerBehavior : CharacterBehavior
 
     }
 
-    // Update is called once per frame
+    // Update calcule du nombre de coeur
     void Update()
     {
 
@@ -170,32 +210,6 @@ public class PlayerBehavior : CharacterBehavior
         }
     }
  
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (state == "DASH")
-        {
-            return;
-        }
-        
-        if (collider.tag == "Ennemy")
-        {
-            Hp = Hp - 1;
-        }
-        if (collider.tag == "Ground")
-        {
-            state = "IDLE";
-        }
-    }
-
- 
-    void OnTriggerExit(Collider collision)
-    {
-        if (collision.tag == "Ground")
-        {
-            state = "JUMP";
-        }
-    }
 
     private int getDashDirection() //8 direction possible
     {
