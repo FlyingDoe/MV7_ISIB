@@ -292,6 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerRB: {fileID: 390359234}
   numOfHearts: 4
+  JumpPower: 700
+  MoveSpeed: 10
+  dashSpeed: 15
   Hearts:
   - {fileID: 1989716535}
   - {fileID: 1945331493}
@@ -303,6 +306,10 @@ MonoBehaviour:
   - {fileID: 1807794531}
   fullHeart: {fileID: 21300000, guid: 30d602b43ef3ee0449076b3741039f3f, type: 3}
   emptyHeart: {fileID: 21300000, guid: 3858419724aafd5449fc7f1e26f9ef12, type: 3}
+  state: IDLE
+  fallMultiplier: 2.5
+  speedJumpMultiplier: 1.5
+  dashTime: 0.1
 --- !u!136 &390359228
 CapsuleCollider:
   m_ObjectHideFlags: 0
