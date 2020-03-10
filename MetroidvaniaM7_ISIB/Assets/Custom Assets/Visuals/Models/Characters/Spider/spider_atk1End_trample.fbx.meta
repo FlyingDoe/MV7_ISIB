@@ -1,14 +1,113 @@
 fileFormatVersion: 2
 guid: a3d6cde6f719d0b4faa41ea076c89a7a
 ModelImporter:
-  serializedVersion: 19300
-  internalIDToNameTable:
-  - first:
-      74: 3035558910729633668
-    second: atk1End_trample
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Abdomen
+    100002: Hips
+    100004: IK_Leg.L.000
+    100006: IK_Leg.L.001
+    100008: IK_Leg.L.002
+    100010: IK_Leg.L.003
+    100012: IK_Leg.R.000
+    100014: IK_Leg.R.001
+    100016: IK_Leg.R.002
+    100018: IK_Leg.R.003
+    100020: IKGoal_Leg.L
+    100022: IKGoal_Leg.R
+    100024: Leg.000.L
+    100026: Leg.000.L.001
+    100028: Leg.000.L.002
+    100030: Leg.000.L.003
+    100032: Leg.000.R
+    100034: Leg.000.R.001
+    100036: Leg.000.R.002
+    100038: Leg.000.R.003
+    100040: Leg.001.L
+    100042: Leg.001.L.001
+    100044: Leg.001.L.002
+    100046: Leg.001.L.003
+    100048: Leg.001.R
+    100050: Leg.001.R.001
+    100052: Leg.001.R.002
+    100054: Leg.001.R.003
+    100056: Leg.002.L
+    100058: Leg.002.L.001
+    100060: Leg.002.L.002
+    100062: Leg.002.L.003
+    100064: Leg.002.R
+    100066: Leg.002.R.001
+    100068: Leg.002.R.002
+    100070: Leg.002.R.003
+    100072: Leg.003.L
+    100074: Leg.003.L.001
+    100076: Leg.003.L.002
+    100078: Leg.003.L.003
+    100080: Leg.003.R
+    100082: Leg.003.R.001
+    100084: Leg.003.R.002
+    100086: Leg.003.R.003
+    100088: Mouth.L
+    100090: Mouth.R
+    100092: ROOT
+    100094: //RootNode
+    100096: Torso
+    100098: UBERROOT
+    400000: Abdomen
+    400002: Hips
+    400004: IK_Leg.L.000
+    400006: IK_Leg.L.001
+    400008: IK_Leg.L.002
+    400010: IK_Leg.L.003
+    400012: IK_Leg.R.000
+    400014: IK_Leg.R.001
+    400016: IK_Leg.R.002
+    400018: IK_Leg.R.003
+    400020: IKGoal_Leg.L
+    400022: IKGoal_Leg.R
+    400024: Leg.000.L
+    400026: Leg.000.L.001
+    400028: Leg.000.L.002
+    400030: Leg.000.L.003
+    400032: Leg.000.R
+    400034: Leg.000.R.001
+    400036: Leg.000.R.002
+    400038: Leg.000.R.003
+    400040: Leg.001.L
+    400042: Leg.001.L.001
+    400044: Leg.001.L.002
+    400046: Leg.001.L.003
+    400048: Leg.001.R
+    400050: Leg.001.R.001
+    400052: Leg.001.R.002
+    400054: Leg.001.R.003
+    400056: Leg.002.L
+    400058: Leg.002.L.001
+    400060: Leg.002.L.002
+    400062: Leg.002.L.003
+    400064: Leg.002.R
+    400066: Leg.002.R.001
+    400068: Leg.002.R.002
+    400070: Leg.002.R.003
+    400072: Leg.003.L
+    400074: Leg.003.L.001
+    400076: Leg.003.L.002
+    400078: Leg.003.L.003
+    400080: Leg.003.R
+    400082: Leg.003.R.001
+    400084: Leg.003.R.002
+    400086: Leg.003.R.003
+    400088: Mouth.L
+    400090: Mouth.R
+    400092: ROOT
+    400094: //RootNode
+    400096: Torso
+    400098: UBERROOT
+    7400000: atk1End_trample
+    9500000: //RootNode
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -41,7 +140,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -49,19 +147,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -70,10 +167,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -83,16 +180,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
