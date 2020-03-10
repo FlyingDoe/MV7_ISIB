@@ -61,6 +61,7 @@ ModelImporter:
     100110: UBERROOT
     100112: Wrist.L
     100114: Wrist.R
+    100116: UBERUBERROOT
     400000: Arm.L
     400002: Arm.R
     400004: Back.000
@@ -119,6 +120,7 @@ ModelImporter:
     400110: UBERROOT
     400112: Wrist.L
     400114: Wrist.R
+    400116: UBERUBERROOT
     4300000: Bilby_Obj
     9500000: //RootNode
     13700000: Bilby_Obj
@@ -179,7 +181,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.099999994
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

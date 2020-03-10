@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ecf6ab7eb38707c4ea952884e5aef72c
+guid: 7795eb149ce7aa249ad49079ea059c2e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -57,9 +57,9 @@ ModelImporter:
     100102: Toes.L
     100104: Toes.R
     100106: UBERROOT
-    100108: UBERUBERROOT
-    100110: Wrist.L
-    100112: Wrist.R
+    100108: Wrist.L
+    100110: Wrist.R
+    100112: UBERUBERROOT
     400000: Arm.L
     400002: Arm.R
     400004: Back.000
@@ -114,10 +114,10 @@ ModelImporter:
     400102: Toes.L
     400104: Toes.R
     400106: UBERROOT
-    400108: UBERUBERROOT
-    400110: Wrist.L
-    400112: Wrist.R
-    7400000: Bilby_hurt
+    400108: Wrist.L
+    400110: Wrist.R
+    400112: UBERUBERROOT
+    7400000: Bilby_smell
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -150,7 +150,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -171,7 +171,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 0.099999994
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
