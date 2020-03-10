@@ -16,7 +16,7 @@ public class EnemySpider : EnnemyBehavior
         intervalAttacks = 5f;
         Detectzone = 20f;
     }
-
+    
 
     override
     public void MoveToPlayer()
