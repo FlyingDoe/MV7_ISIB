@@ -33,7 +33,7 @@ public class EnemySpider : EnnemyBehavior
     }
 
     override
-    public void TakeAHit(attype type)
+    public void TakeAHit(AtkType type)
     {
         Hp = Hp - 1;
         if (Hp == 0)

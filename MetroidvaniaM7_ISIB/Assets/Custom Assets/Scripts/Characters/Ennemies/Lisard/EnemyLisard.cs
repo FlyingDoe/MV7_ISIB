@@ -53,7 +53,7 @@ public class EnemyLisard : EnnemyBehavior
     }
 
     override
-    public void TakeAHit(attype type)
+    public void TakeAHit(AtkType type)
     {
         Hp = Hp - 1;
 
