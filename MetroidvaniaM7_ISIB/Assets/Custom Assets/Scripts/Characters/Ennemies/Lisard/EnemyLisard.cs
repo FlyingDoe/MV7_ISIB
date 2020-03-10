@@ -2,33 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLisard : CharacterBehavior
-{
-    public Transform player;//PlayerBehavior player;
+public class EnemyLisard : EnnemyBehavior
+{   
+    //PlayerBehavior player;
     public float RangeofLangue;
-    public int dommage;
-    public int intervalAttacks;
+    private float timeAttacks;
+    private float TimeCoolDownAttacks;
+    private bool tirerLangue = true;
     public GameObject langue;
 
     void Start()
     {
-
+        timeAttacks = 0;
         MaxHp = 5;
         Hp = MaxHp;
         MoveSpeed = 10.0f;
         JumpPower = 0.0f;
         RangeofLangue = 5f;
-        dommage = 1;
-        intervalAttacks = 1000; 
+        TimeCoolDownAttacks = 0.3f;
+        Detectzone = 20f;
     }
 
-    void Update()
-    {
-    }
-
+    override
     public void MoveToPlayer()
     {
-        transform.LookAt(player.position);
+        transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, 0));
         transform.Rotate(new Vector3(0, -90, 0), Space.Self);
         if (Vector3.Distance(transform.position, player.transform.position) > RangeofLangue)
         {
@@ -36,30 +34,36 @@ public class EnemyLisard : CharacterBehavior
         }
         else
         {
-            System.Threading.Thread.Sleep(intervalAttacks);
-            langue.transform.localScale += new Vector3(RangeofLangue, 0, 0);      
+            //Debug.Log("on veut attacker 1");
+            if (timeAttacks > TimeCoolDownAttacks)
+            {
+                //Debug.Log("on veut attacker 2");
+
+                if (tirerLangue)
+                {
+                    langue.transform.localScale += new Vector3(RangeofLangue, 0, 0);
+                    tirerLangue = false;
+                    timeAttacks = 0;
+                }  
+            }
+            else { timeAttacks += Time.deltaTime; }
+
+            
         }
     }
 
-
-    public void test()
-        {
-        if (langue.transform.localScale.x > RangeofLangue)
-        {
-            System.Threading.Thread.Sleep(200);
-            langue.transform.localScale -= new Vector3(RangeofLangue, 0, 0);
-        }
-        }
-
-    public void TakeAHit()
+    override
+    public void TakeAHit(attype type)
     {
         Hp = Hp - 1;
-        if (Hp == 0)
+
+        if (Hp <= 0)
         {
             // annimation mort 
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter(Collider collider)
     {
         Debug.Log("Toucher");

@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpider : CharacterBehavior
+public class EnemySpider : EnnemyBehavior
 {
-    public PlayerBehavior player;//
-    public float Range;
-    public int dommage;
-    public float intervalAttacks;
 
     void Start()
     {
@@ -16,30 +12,28 @@ public class EnemySpider : CharacterBehavior
         Hp = MaxHp;
         MoveSpeed = 10.0f;
         JumpPower = 0.0f;
-        Range = 0f;
         dommage = 1;
         intervalAttacks = 5f;
+        Detectzone = 20f;
     }
 
-    void Update()
-    { 
-        
-    }
-    
+
+    override
     public void MoveToPlayer()
     {
         
         this.transform.LookAt(player.transform.position);
         this.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-        
-        if (Vector3.Distance(this.transform.position, player.transform.position) > Range)
+
+        if (Vector3.Distance(this.transform.position, player.transform.position) > 0)
         {
             //if (player.transform.position.x > this.transform.position.x)
                 this.transform.Translate(new Vector3(MoveSpeed * Time.deltaTime, 0, 0)); 
         }
     }
 
-    public void TakeAHit()
+    override
+    public void TakeAHit(attype type)
     {
         Hp = Hp - 1;
         if (Hp == 0)
@@ -55,7 +49,7 @@ public class EnemySpider : CharacterBehavior
         if (collider.tag == "Player")
         {
             if (player.state == "attack") {
-                TakeAHit();
+                //TakeAHit();
             } else {
                 Debug.Log("player doit prendre dégat");
             }
