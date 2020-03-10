@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class EnnemyBehavior : CharacterBehavior
 {
-    // Start is called before the first frame update
+    public PlayerBehavior player;
+    public int dommage;
+    public float intervalAttacks;
+    public float Detectzone;
+
     void Start()
     {
-
     }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
+        if (Vector3.Distance(this.transform.position, player.transform.position) < Detectzone)
+        {
+            this.MoveToPlayer();
+        }
+
+
     }
+    public virtual void MoveToPlayer() { }
+    
+    public virtual void TakeAHit(AtkType type)
+    {
+
+    }   
 }
