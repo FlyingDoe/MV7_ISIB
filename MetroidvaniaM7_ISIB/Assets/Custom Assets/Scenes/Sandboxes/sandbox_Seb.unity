@@ -1465,7 +1465,7 @@ MonoBehaviour:
   numOfHearts: 4
   JumpPower: 700
   MoveSpeed: 10
-  dashSpeed: 60
+  dashSpeed: 15
   Hearts:
   - {fileID: 504110902}
   - {fileID: 860703721}

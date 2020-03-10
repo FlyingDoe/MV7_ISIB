@@ -37,6 +37,11 @@ public class PlayerBehavior : CharacterBehavior
 
     private void FixedUpdate()
     {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);
+        if (isGrounded && state != "DASH")                                      //VOIR LA BONNE DISTANCE
+        {
+            state = "IDLE";
+        }
         if (PlayerRB.velocity.y < 0)
         {
             PlayerRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -113,7 +118,14 @@ public class PlayerBehavior : CharacterBehavior
                     Debug.Log("DASH");
                 } else { 
                 endDash(dashDirection);
-                state = "IDLE";
+                    isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
+                    if (isGrounded)                                      
+                    {
+                        state = "IDLE";
+                    } else
+                    {
+                        state = "JUMP";
+                    }                   
                 Debug.Log("Stop Dash");
                 }
 
@@ -161,7 +173,11 @@ public class PlayerBehavior : CharacterBehavior
 
     private void OnTriggerEnter(Collider collider)
     {
-    Debug.Log("Toucher");
+        if (state == "DASH")
+        {
+            return;
+        }
+        
         if (collider.tag == "Ennemy")
         {
             Hp = Hp - 1;
