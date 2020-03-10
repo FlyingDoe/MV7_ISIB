@@ -28,12 +28,14 @@ public class AmbienMusicManager : MonoBehaviour
     private int audioSourceIndex;
     private int audioSourcePlayIndex;
 
+    System.Random rand = new System.Random();
+
     void Awake()
     {
         //SETTING MUSIC BAR LENGHT
         double beatLength = 60.0 / BPM;
         timerValue = (float)(beatLength * 32);
-        timer = timerValue;
+        timer = 0;
 
         //Getting the mixer 
         mixer = Resources.Load<AudioMixer>("mixer");
@@ -41,7 +43,7 @@ public class AmbienMusicManager : MonoBehaviour
         //CREATING THE AUDIO SOURCE 
         for (int i = 0; i < 2; i++)
         {
-            Debug.Log("CAMERA");
+            //Debug.Log("CAMERA");
             musicAudioSources.Add(GameObject.FindObjectOfType<Camera>().gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
             
         }
@@ -67,9 +69,8 @@ public class AmbienMusicManager : MonoBehaviour
         {
             musicAudioSources[audioSourceIndex%2].clip = _sound.AudioClip;
             audioSourceIndex++;
-            Debug.Log("MUSIC" + _sound.AudioClip);
+            //Debug.Log("MUSIC" + _sound.AudioClip);
         }
-        playNextBar();
        
         //Debug.Log("Audio Source "+musicAudioSource);
 
@@ -84,16 +85,17 @@ public class AmbienMusicManager : MonoBehaviour
         if (timer <= 0)
         {
             timer = timerValue;
-            playNextBar();
+            playNextBar(audioSourcePlayIndex % 2);
             musicAudioSources[audioSourcePlayIndex%2].Play();
-            Debug.Log(audioSourcePlayIndex % 2);
+            //Debug.Log(audioSourcePlayIndex % 2);
             audioSourcePlayIndex++;
         }
+        //Debug.Log("TAG " + currentMood + " " + myTagFlag);
     }
 
-    private void playNextBar()
+    private void playNextBar(int i) //i = audioSourceIndex
     {
-        Debug.Log("PLAY NEW");
+        //Debug.Log("PLAY NEW");
         switch (myTagFlag)
         {
             case tagFlag.MODIFIED:
@@ -109,12 +111,26 @@ public class AmbienMusicManager : MonoBehaviour
                         }
                     }
                 }
+                myTagFlag = tagFlag.NOT_MODIFIED_YET;
                 //soundsWhoMatchTheCurrentMood[0].AudioClip.
                 break;
             case tagFlag.NOT_MODIFIED_YET:
                 break;
             default:
                 break;
+        }
+        if (soundsWhoMatchTheCurrentMood.Count>0)
+        {
+            int index = rand.Next(0, soundsWhoMatchTheCurrentMood.Count);
+
+            musicAudioSources[i].clip = soundsWhoMatchTheCurrentMood[index].AudioClip;
+
+
+        }
+        else
+        {
+            int index = rand.Next(0, backGroundSound.Count);
+            musicAudioSources[i].clip = backGroundSound[index].AudioClip;
         }
     }
 
@@ -126,7 +142,8 @@ public class AmbienMusicManager : MonoBehaviour
             try
             {
                 currentMood = (Sound._tag)value;
-                myTagFlag = tagFlag.NOT_MODIFIED_YET;
+                myTagFlag = tagFlag.MODIFIED;
+
             }
             catch (Exception e)
             {
