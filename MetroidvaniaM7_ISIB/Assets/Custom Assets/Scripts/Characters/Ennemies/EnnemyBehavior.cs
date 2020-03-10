@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnnemyBehavior : CharacterBehavior
 {
-    public PlayerBehavior player;//
+    public PlayerBehavior player;
     public int dommage;
     public float intervalAttacks;
     public float Detectzone;
@@ -24,7 +24,8 @@ public class EnnemyBehavior : CharacterBehavior
     }
     public virtual void MoveToPlayer() { }
     
-    public virtual void TakeAHit(attype type)
+    public virtual void TakeAHit(AtkType type)
     {
+
     }   
 }
