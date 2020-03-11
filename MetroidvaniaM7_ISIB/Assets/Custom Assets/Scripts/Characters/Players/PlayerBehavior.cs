@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class PlayerBehavior : CharacterBehavior
     public float fallMultiplier = 2.5f;
     public float speedJumpMultiplier = 20.0f;
     public float dashTime;
-    public float timeCouldownDash;
+    public float timecooldownDash;
     public float maxDurationBite;
 
     private float durationBite;
@@ -37,17 +38,13 @@ public class PlayerBehavior : CharacterBehavior
         Hp = numOfHearts -1;
         state = "IDLE";
         dashDirection = 6;
-        timeCouldownDash = 4;
+        timecooldownDash = 4;
     }
 
     private void FixedUpdate()
     {
-        timeCouldownDash += Time.deltaTime;
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);
-        if (isGrounded && state != "DASH")                                      //VOIR LA BONNE DISTANCE
-        {
-            state = "IDLE";
-        }
+        timecooldownDash += Time.deltaTime;
+        isIdle(Physics.Raycast(transform.position, Vector3.down, 0.2f));        
         if (PlayerRB.velocity.y < 0)
         {
             PlayerRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -63,7 +60,6 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     PlayerRB.AddForce(Vector3.up * JumpPower);
                     state = "JUMP";
-                    Debug.Log("Jump");
                 }
                 if (Input.GetButton("Horizontal")) //Project settings input
                 {
@@ -81,7 +77,7 @@ public class PlayerBehavior : CharacterBehavior
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
                 }
 
-                if (Input.GetButtonDown("Dash") && timeCouldownDash >= 4) //Project settings input
+                if (Input.GetButtonDown("Dash") && timecooldownDash >= 4) //Project settings input
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
@@ -93,7 +89,7 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
-                    durationBite = 0;
+                    durationBite = maxDurationBite;
                     state = "ATK_MELEE";
                 }
                 break;
@@ -105,16 +101,18 @@ public class PlayerBehavior : CharacterBehavior
                     {
                         transform.eulerAngles = new Vector3(0, 180, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
+                        dashDirection = 5;
                     }
                     else if (Input.GetAxisRaw("Horizontal") > 0)
                     {
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
+                        dashDirection = 6;
                     }
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
                 }
 
-                if (Input.GetButtonDown("Dash") && timeCouldownDash >= 4) //Project settings input
+                if (Input.GetButtonDown("Dash") && timecooldownDash >= 4) //Project settings input
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
@@ -126,7 +124,7 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
-                    durationBite = 0;
+                    durationBite = maxDurationBite;
                     state = "ATK_MELEE";
                 }
 
@@ -148,15 +146,15 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     state = "JUMP";
                 }
-                timeCouldownDash = 0;
+                timecooldownDash = 0;
                 Debug.Log("Stop Dash");
                 }
 
                 break;
 
             case "ATK_MELEE":
-                durationBite += Time.deltaTime;
-                if (durationBite > maxDurationBite)
+                durationBite -= Time.deltaTime;
+                if (durationBite <= 0)
                 {
                     biteCollider.enabled = false;
                     headCollider.enabled = true;                
@@ -180,6 +178,15 @@ public class PlayerBehavior : CharacterBehavior
                 break;
         }
 
+    }
+
+    private void isIdle(bool isGrounded)
+    {
+        if (isGrounded && state != "DASH" && state != "ATK_MELEE")
+        {
+            state = "IDLE";
+        }
+         
     }
 
     // Update calcule du nombre de coeur
@@ -258,7 +265,6 @@ public class PlayerBehavior : CharacterBehavior
         }
         return dashDirection;
     }
-
     private void dash(int direction)
     {
         switch (direction)
@@ -335,5 +341,6 @@ public class PlayerBehavior : CharacterBehavior
 
         }
     }
+    
 
 }

@@ -1551,8 +1551,8 @@ MonoBehaviour:
   fallMultiplier: 2.5
   speedJumpMultiplier: 1.5
   dashTime: 0.1
-  timeCouldownDash: 4
-  maxDurationBite: 0
+  timecooldownDash: 0
+  maxDurationBite: 2
 --- !u!136 &1882282744
 CapsuleCollider:
   m_ObjectHideFlags: 0

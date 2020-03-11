@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
     {
         if (other.tag=="Ennemy")
         {
-            //other.GetComponent<EnnemyBehavior>.
+            other.GetComponent<EnnemyBehavior>().TakeAHit(CharacterBehavior.AtkType.bite);
         }
     }
 }
