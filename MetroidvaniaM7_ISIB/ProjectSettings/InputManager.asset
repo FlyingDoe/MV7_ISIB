@@ -57,10 +57,10 @@ InputManager:
     m_Name: AttackMelee
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: '&'
     positiveButton: e
     altNegativeButton: 
-    altPositiveButton: mouse 1
+    altPositiveButton: '&'
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -74,7 +74,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left shift
+    positiveButton: '"'
     altNegativeButton: 
     altPositiveButton: mouse 2
     gravity: 1000
