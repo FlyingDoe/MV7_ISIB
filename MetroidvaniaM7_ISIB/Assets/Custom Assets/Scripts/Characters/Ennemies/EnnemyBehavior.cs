@@ -14,7 +14,7 @@ public class EnnemyBehavior : CharacterBehavior
     }
     void FixedUpdate()
     {
-
+        this.doAllTime();
         if (Vector3.Distance(this.transform.position, player.transform.position) < Detectzone)
         {
             this.MoveToPlayer();
@@ -22,6 +22,7 @@ public class EnnemyBehavior : CharacterBehavior
 
 
     }
+    public virtual void doAllTime() { }
     public virtual void MoveToPlayer() { }
     
     public virtual void TakeAHit(AtkType type)

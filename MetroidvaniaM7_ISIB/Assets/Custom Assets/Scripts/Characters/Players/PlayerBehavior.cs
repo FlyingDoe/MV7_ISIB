@@ -23,8 +23,10 @@ public class PlayerBehavior : CharacterBehavior
     public float dashTime;
     public float timecooldownDash;
     public float maxDurationBite;
+    public float maxDurationTail;
 
     private float durationBite;
+    private float durationTail;
     private float startDashTime;
     private int dashDirection;
     private float horizontalMovement;
@@ -68,13 +70,18 @@ public class PlayerBehavior : CharacterBehavior
                         transform.eulerAngles = new Vector3(0, 180, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
                         dashDirection = 5;
+                        GetComponentInChildren<Animator>().SetBool("running", true);
                     } else if (Input.GetAxisRaw("Horizontal") > 0)
                     {
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0); // A CHANGER SI ON NE VEUT PAS SE STOP A H = 0
                         dashDirection = 6;
-                    }
+                        GetComponentInChildren<Animator>().SetBool("running", true);
+                    } 
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
+                } else
+                {                
+                        GetComponentInChildren<Animator>().SetBool("running", false);                    
                 }
 
                 if (Input.GetButtonDown("Dash") && timecooldownDash >= 4) //Project settings input
@@ -90,11 +97,20 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
-                    state = "ATK_MELEE";
+                    state = "ATK_MELEE_BITE";
+                }
+
+                if (Input.GetKeyDown(KeyCode.R)) //ATK Tail A CHANGER LES COLLIDER 
+                {
+                    biteCollider.enabled = true;
+                    headCollider.enabled = false;
+                    durationTail = maxDurationTail;
+                    state = "ATK_MELEE_Tail";
                 }
                 break;
 
             case "JUMP":
+                GetComponentInChildren<Animator>().SetBool("jump", true);
                 if (Input.GetButton("Horizontal")) //Project settings input
                 {
                     if (Input.GetAxisRaw("Horizontal") < 0)
@@ -125,7 +141,15 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
-                    state = "ATK_MELEE";
+                    state = "ATK_MELEE_BITE";
+                }
+
+                if (Input.GetKeyDown(KeyCode.R)) //ATK Tail A CHANGER LES COLLIDER 
+                {
+                    biteCollider.enabled = true;
+                    headCollider.enabled = false;
+                    durationTail = maxDurationTail;
+                    state = "ATK_MELEE_Tail";
                 }
 
                 break;
@@ -152,7 +176,7 @@ public class PlayerBehavior : CharacterBehavior
 
                 break;
 
-            case "ATK_MELEE":
+            case "ATK_MELEE_BITE":
                 durationBite -= Time.deltaTime;
                 if (durationBite <= 0)
                 {
@@ -173,7 +197,26 @@ public class PlayerBehavior : CharacterBehavior
 
                 break;
 
-            case "ATK_DISTANCE":
+            case "ATK_MELEE_Tail":
+                durationTail -= Time.deltaTime;
+                if (durationTail <= 0)
+                {
+                    biteCollider.enabled = false;
+                    headCollider.enabled = true;
+                    isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
+                    if (isGrounded)
+                    {
+                        state = "IDLE";
+                    }
+                    else
+                    {
+                        state = "JUMP";
+                    }
+                    Debug.Log("Stop AttackTail");
+                }
+                break;
+
+            case "ATK_DISTANCE_FIREBALL":
 
                 break;
         }
@@ -189,33 +232,37 @@ public class PlayerBehavior : CharacterBehavior
          
     }
 
+<<<<<<< HEAD
+    
+=======
     // Update calcule du nombre de coeur
-    void Update()
-    {
+    //void Update()
+    //{
 
-        if (Hp > numOfHearts)
-        {
-            Hp = numOfHearts;
-        }
-        for (int i = 0; i < Hearts.Length; i++)
-        {
-            if (i < Hp)
-            {
-                Hearts[i].sprite = fullHeart;
-            } else
-            {
-                Hearts[i].sprite = emptyHeart;
-            }
-            if (i < numOfHearts)
-            {
-                Hearts[i].enabled = true;
-            } else
-            {
-                Hearts[i].enabled = false;
-            }
+    //    if (Hp > numOfHearts)
+    //    {
+    //        Hp = numOfHearts;
+    //    }
+    //    for (int i = 0; i < Hearts.Length; i++)
+    //    {
+    //        if (i < Hp)
+    //        {
+    //            Hearts[i].sprite = fullHeart;
+    //        } else
+    //        {
+    //            Hearts[i].sprite = emptyHeart;
+    //        }
+    //        if (i < numOfHearts)
+    //        {
+    //            Hearts[i].enabled = true;
+    //        } else
+    //        {
+    //            Hearts[i].enabled = false;
+    //        }
 
-        }
-    }
+    //    }
+    //}
+>>>>>>> 6c920b14823231f903f60f3b6d3bf7ef063801a0
  
 
     private int getDashDirection() //8 direction possible

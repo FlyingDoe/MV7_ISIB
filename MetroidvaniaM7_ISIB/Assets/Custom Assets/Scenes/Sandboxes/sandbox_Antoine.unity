@@ -312,7 +312,7 @@ MonoBehaviour:
   fallMultiplier: 2.5
   speedJumpMultiplier: 1.5
   dashTime: 0.1
-  timeCouldownDash: 0
+  timecooldownDash: 0
   maxDurationBite: 0
 --- !u!136 &390359228
 CapsuleCollider:
@@ -1704,6 +1704,8 @@ MonoBehaviour:
   intervalAttacks: 0
   Detectzone: 0
   RangeofLangue: 0
+  timeAttacks: 0
+  TimeCoolDownAttacks: 0
   langue: {fileID: 2135385143}
 --- !u!1 &2100526027
 GameObject:
@@ -1922,7 +1924,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135385143}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

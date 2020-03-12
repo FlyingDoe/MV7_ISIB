@@ -16,13 +16,14 @@ public class EnemySpider : EnnemyBehavior
         intervalAttacks = 5f;
         Detectzone = 20f;
     }
-    
-
+    override
+    public void doAllTime()
+    { }
     override
     public void MoveToPlayer()
     {
         
-        this.transform.LookAt(player.transform.position);
+        this.transform.LookAt(new Vector3(player.transform.position.x, this.transform.position.y, 0));
         this.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
 
         if (Vector3.Distance(this.transform.position, player.transform.position) > 0)

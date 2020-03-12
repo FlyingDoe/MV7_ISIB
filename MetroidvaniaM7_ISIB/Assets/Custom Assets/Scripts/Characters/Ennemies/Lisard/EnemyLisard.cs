@@ -6,37 +6,57 @@ public class EnemyLisard : EnnemyBehavior
 {   
     //PlayerBehavior player;
     public float RangeofLangue;
-    private float timeAttacks;
-    private float TimeCoolDownAttacks;
+    public float timeAttacks;
+    public float TimeCoolDownAttacks;
+    private float timelanguetirer;
+    private float TIMELTIRER;
     private bool tirerLangue = true;
+
     public GameObject langue;
 
     void Start()
     {
+        TIMELTIRER = 1f;
         timeAttacks = 0;
         MaxHp = 5;
         Hp = MaxHp;
         MoveSpeed = 10.0f;
         JumpPower = 0.0f;
         RangeofLangue = 5f;
-        TimeCoolDownAttacks = 1f;
+        TimeCoolDownAttacks = 2f;
         timeAttacks = TimeCoolDownAttacks;
         Detectzone = 20f;
     }
+    override
+    public void doAllTime() {
+    if (!tirerLangue)
+        {
+            if (timelanguetirer > TIMELTIRER)
+            {
+                Debug.Log("on rendre la langue");
+                langue.transform.localScale -= new Vector3(RangeofLangue, 0, 0);
+    tirerLangue = true;
+                timelanguetirer = 0;
+            }
+            else { timelanguetirer += Time.deltaTime; }
+        }
+    }
 
-    
     override
     public void MoveToPlayer()
     {
         
-        this.transform.LookAt(new Vector3(player.transform.position.x, this.transform.position.y, 0));
-        this.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+        if (tirerLangue)
+        {
+            this.transform.LookAt(new Vector3(player.transform.position.x, this.transform.position.y, 0));
+            this.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+        }
         if (Vector3.Distance(transform.position, player.transform.position) > RangeofLangue )
         {
+            timeAttacks = 0;
             transform.Translate(new Vector3(MoveSpeed * Time.deltaTime, 0, 0));
-        }
-        else
-        {
+        }else
+            {
 
             if (timeAttacks < 0)
             {
@@ -49,13 +69,7 @@ public class EnemyLisard : EnnemyBehavior
                 timeAttacks = TimeCoolDownAttacks;
             }
             else { timeAttacks -= Time.deltaTime;
-                if (!tirerLangue)
-                {
-                    Debug.Log("on rendre la langue");
-                    langue.transform.localScale -= new Vector3(RangeofLangue, 0, 0);
-                    tirerLangue = true;
-                }
-
+               
             }
         }
     }
