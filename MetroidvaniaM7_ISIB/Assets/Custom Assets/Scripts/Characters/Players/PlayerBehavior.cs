@@ -232,9 +232,7 @@ public class PlayerBehavior : CharacterBehavior
          
     }
 
-<<<<<<< HEAD
-    
-=======
+
     // Update calcule du nombre de coeur
     //void Update()
     //{
@@ -262,7 +260,7 @@ public class PlayerBehavior : CharacterBehavior
 
     //    }
     //}
->>>>>>> 6c920b14823231f903f60f3b6d3bf7ef063801a0
+
  
 
     private int getDashDirection() //8 direction possible

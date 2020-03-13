@@ -7,7 +7,7 @@ public class EnnemyBehavior : CharacterBehavior
     public PlayerBehavior player;
     public int dommage;
     public float intervalAttacks;
-    public float Detectzone = 0f;
+    public float Detectzone;
 
     void Start()
     {
