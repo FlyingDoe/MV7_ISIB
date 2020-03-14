@@ -26,6 +26,7 @@ public class PlayerBehavior : CharacterBehavior
     public float maxDurationBite;
     public float maxDurationTail;
     public float maxDurationSmell;
+    public int numFireBall;
 
     private float durationSmell;
     private float durationBite;
@@ -34,7 +35,9 @@ public class PlayerBehavior : CharacterBehavior
     private int dashDirection;
     private float horizontalMovement;
     private bool isGrounded;
- 
+
+    ObjectPooler objectPooler;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,7 @@ public class PlayerBehavior : CharacterBehavior
         state = "IDLE";
         dashDirection = 6;
         timecooldownDash = 4;
+        objectPooler = ObjectPooler.Instance;
     }
 
     private void FixedUpdate()
@@ -58,12 +62,15 @@ public class PlayerBehavior : CharacterBehavior
             transform.Translate(0, speedJumpMultiplier * Time.deltaTime, 0);
         }
 
+        #region StateManager
+
         switch (state)
         {
             case "IDLE":
                 if (Input.GetButtonDown("Jump")) //Project settings input
                 {
                     PlayerRB.AddForce(Vector3.up * JumpPower);
+                    GetComponentInChildren<Animator>().SetBool("jump", true);
                     state = "JUMP";
                 }
                 if (Input.GetButton("Horizontal")) //Project settings input
@@ -91,7 +98,6 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
-                    Debug.Log("DASH Input Idle");
                     startDashTime = 0;
                 }
 
@@ -115,20 +121,38 @@ public class PlayerBehavior : CharacterBehavior
                     state = "ATK_MELEE_TAIL";
                 }
 
-                if (Input.GetKeyDown(KeyCode.J)) //ATK Tail A CHANGER LES COLLIDER 
+                if (Input.GetKeyDown(KeyCode.F)) //ATK Tail A CHANGER LES COLLIDER 
                 {
                     durationSmell = maxDurationSmell;
                     GetComponentInChildren<Animator>().SetBool("smelll", true);
                     state = "SMELL";
                 }
+
+                if (Input.GetKeyDown(KeyCode.G)) //ATK Tail A CHANGER LES COLLIDER 
+                {
+                    if (numFireBall > 0)
+                    {
+                        numFireBall -= 1;
+                        GetComponentInChildren<Animator>().SetBool("atk1", true);
+                        Debug.Log(transform.rotation.y);
+                        bool directionRightFireBall = true;
+                        if (transform.rotation.y == 1)
+                        {
+                            directionRightFireBall = false;
+                        }
+                        objectPooler.SpawnFromPool("FireBall", transform.position, Quaternion.identity, directionRightFireBall);
+                        state = "ATK_DISTANCE_FIREBALL";
+                    }
+                }
                 break;
 
             case "JUMP":
-                GetComponentInChildren<Animator>().SetBool("jump", true);
+                GetComponentInChildren<Animator>().SetBool("jump", false);
                 if (Input.GetButton("Horizontal")) //Project settings input
                 {
                     if (Input.GetAxisRaw("Horizontal") < 0)
                     {
+                        GetComponentInChildren<Animator>().SetBool("running", true);
                         transform.eulerAngles = new Vector3(0, 180, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
                         dashDirection = 5;
@@ -137,6 +161,7 @@ public class PlayerBehavior : CharacterBehavior
                     {
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
+                        GetComponentInChildren<Animator>().SetBool("running", true);
                         dashDirection = 6;
                     }
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
@@ -146,7 +171,6 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     dashDirection = getDashDirection(); //A TERMINER !!! dashtime -= Time.deltaTime et si plus petit que 0 = finito le state ne sera plus en dash
                     state = "DASH";
-                    Debug.Log("Start DASH Input Jump");
                     startDashTime = 0;
                 }
 
@@ -159,7 +183,7 @@ public class PlayerBehavior : CharacterBehavior
                     state = "ATK_MELEE_BITE";
                 }
 
-                if (Input.GetKeyDown(KeyCode.R)) //ATK Tail A CHANGER LES COLLIDER 
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     foreach (var collider in tailCollider)
                     {
@@ -169,15 +193,32 @@ public class PlayerBehavior : CharacterBehavior
                     GetComponentInChildren<Animator>().SetBool("atk2", true);
                     state = "ATK_MELEE_TAIL";
                 }
+                if (Input.GetKeyDown(KeyCode.G)) 
+                {
+                    if (numFireBall > 0)
+                    {
+                        numFireBall -= 1;
+                        GetComponentInChildren<Animator>().SetBool("atk1", true);
+                        Debug.Log(transform.rotation.y);
+                        bool directionRightFireBall = true;
+                        if (transform.rotation.y == 1)
+                        {
+                            directionRightFireBall = false;
+                        }
+                        objectPooler.SpawnFromPool("FireBall", transform.position, Quaternion.identity, directionRightFireBall);
+                        state = "ATK_DISTANCE_FIREBALL";
+                    }
+                }
 
                 break;
+
+
 
             case "DASH":
                 if (startDashTime < dashTime)
                 {
                     startDashTime += Time.deltaTime;
                     dash(dashDirection);
-                    Debug.Log("DASH");
                 } else { 
                 endDash(dashDirection);
                 isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
@@ -189,7 +230,6 @@ public class PlayerBehavior : CharacterBehavior
                     state = "JUMP";
                 }
                 timecooldownDash = 0;
-                Debug.Log("Stop Dash");
                 }
 
                 break;
@@ -210,7 +250,6 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     state = "JUMP";
                 }
-                Debug.Log("Stop AttackBite");
                 }
 
 
@@ -251,10 +290,22 @@ public class PlayerBehavior : CharacterBehavior
                 break;
 
             case "ATK_DISTANCE_FIREBALL":
+                //CREATION DE LA BOULE DE FEU
 
-               break;
+                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);
+                if (isGrounded)
+                {
+                    state = "IDLE";
+                }
+                else
+                {
+                    state = "JUMP";
+                }
+                break;
 
         }
+
+        #endregion StateManager
 
     }
 
@@ -266,7 +317,8 @@ public class PlayerBehavior : CharacterBehavior
         }
          
     }
- 
+
+    #region Dash
 
     private int getDashDirection() //8 direction possible
     {
@@ -391,6 +443,8 @@ public class PlayerBehavior : CharacterBehavior
 
         }
     }
-    
+
+    #endregion Dash
+
 
 }
