@@ -6,25 +6,24 @@ public class EnemyLisard : EnnemyBehavior
 {
     //PlayerBehavior player;
     private bool hurt = false;
-    public float RangeofLangue;
-    public float timeAttacks;
-    public float TimeCoolDownAttacks;
-    private float timelanguetirer;
-    private float TIMELTIRER;
+
+    public float RangeofLangue = 5f;
+    //private float timeAttacks;
+    //public float TimeCoolDownAttacks;
     private bool tirerLangue = true;
-    public GameObject langue;
+   // public GameObject langue;
 
     void Start()
     {
-        TIMELTIRER = 1f;
-        timeAttacks = 0;
-        MaxHp = 5;
+
+        //timeAttacks = 0;
+        MaxHp = 2;
         Hp = MaxHp;
         MoveSpeed = 5.0f;
         JumpPower = 0.0f;
-        RangeofLangue = 5f;
-        TimeCoolDownAttacks = 2f;
-        timeAttacks = 2f;
+         //longeur de la langue dans l'anim
+        //TimeCoolDownAttacks = 3f; // vue que l'animation est lente j'ai juste fais que l'ataque sois le temps du cool down 
+        //timeAttacks = TimeCoolDownAttacks;
         Detectzone = 20f;
     }
     override
@@ -46,15 +45,11 @@ public class EnemyLisard : EnnemyBehavior
         }
             if (!tirerLangue)
         {
-            if (timelanguetirer > TIMELTIRER) // l'idée c'était de renter la langue 
-            {
-                Debug.Log("on rendre la langue");
-                langue.transform.localScale = new Vector3(0, 0, 0);
-                GetComponentInChildren<Animator>().SetBool("atk", false);
-                tirerLangue = true;
-                timelanguetirer = 0;
-            }
-            else { timelanguetirer += Time.deltaTime; }
+            Debug.Log("on rendre la langue");
+            GetComponentInChildren<Animator>().SetBool("atk", false);
+             
+            //timeAttacks = TimeCoolDownAttacks;
+            tirerLangue = true;
         }
     }
 
@@ -70,38 +65,47 @@ public class EnemyLisard : EnnemyBehavior
         if (Vector3.Distance(transform.position, player.transform.position) > RangeofLangue )
         {
             //GetComponentInChildren<Animator>().SetBool("atk", false);
+            
+            tirerLangue = false;
             GetComponentInChildren<Animator>().SetBool("running", true);
-            timeAttacks = 0;
+
             transform.Translate(new Vector3(MoveSpeed * Time.deltaTime, 0, 0));
         }else
             {
             //GetComponentInChildren<Animator>().SetBool("running", false);
-
-            if (timeAttacks < 0)
+            GetComponentInChildren<Animator>().SetBool("running", false);
+            GetComponentInChildren<Animator>().SetBool("atk", true);
+            /*if (timeAttacks < 0)
             {
                 if (tirerLangue)
-                {
-                    GetComponentInChildren<Animator>().SetBool("running", false);
-                    GetComponentInChildren<Animator>().SetBool("atk", true);
-                    langue.transform.localScale = new Vector3(1 , 0.01f , 0.02f); //tirer la langue 
-                    Debug.Log("on tire la langue");
-                    tirerLangue = false;                  
+                {*/
+                    tirerLangue =false;
+            /*
                 }
                 timeAttacks = TimeCoolDownAttacks;
             }
             else { timeAttacks -= Time.deltaTime;
                
-            }
+            }*/
         }
     }
 
     override
     public void TakeAHit(AtkType type)
     {
-        Hp = Hp - 1;
-        GetComponentInChildren<Animator>().SetBool("running", false);
-        GetComponentInChildren<Animator>().SetBool("hurt", true);
-        hurt = false;
+        if (type == AtkType.bite) {
+            Hp = Hp - 1;
+            GetComponentInChildren<Animator>().SetBool("running", false);
+            GetComponentInChildren<Animator>().SetBool("hurt", true);
+            hurt = false;
+        }
+        if (type == AtkType.slash)
+        {
+            Hp = Hp - 1;
+            GetComponentInChildren<Animator>().SetBool("running", false);
+            GetComponentInChildren<Animator>().SetBool("hurt", true);
+            hurt = false;
+        }
         // GetComponentInChildren<Animator>().SetBool("hurt", false); à la fin animation 
         if (Hp <= 0)
         { 

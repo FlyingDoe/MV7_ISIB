@@ -10,7 +10,7 @@ public class EnemySpider : EnnemyBehavior
     void Start()
     {
 
-        MaxHp = 5;
+        MaxHp = 1;
         Hp = MaxHp;
         MoveSpeed = 5.0f;
         JumpPower = 0.0f;
@@ -77,12 +77,24 @@ public class EnemySpider : EnnemyBehavior
     override
     public void TakeAHit(AtkType type)
     {
-        Hp = Hp - 1;
-        GetComponentInChildren<Animator>().SetBool("running", false);
-        GetComponentInChildren<Animator>().SetBool("hurt", true);
+        if (type == AtkType.bite)
+        {
+            Hp = Hp - 1;
+            GetComponentInChildren<Animator>().SetBool("running", false);
+            GetComponentInChildren<Animator>().SetBool("hurt", true);
+            hurt = true;
+        }
+        if (type == AtkType.slash)
+        {
+            Hp = Hp - 1;
+            GetComponentInChildren<Animator>().SetBool("running", false);
+            GetComponentInChildren<Animator>().SetBool("hurt", true);
+            hurt = true;
+        }
+
         if (Hp == 0)
         {
-            hurt = true;
+            
             Destroy(gameObject);
         }
     }
