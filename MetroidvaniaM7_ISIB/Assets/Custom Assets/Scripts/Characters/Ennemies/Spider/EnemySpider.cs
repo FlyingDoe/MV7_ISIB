@@ -78,10 +78,10 @@ public class EnemySpider : EnnemyBehavior
     public void TakeAHit(AtkType type)
     {
         Hp = Hp - 1;
+        GetComponentInChildren<Animator>().SetBool("running", false);
+        GetComponentInChildren<Animator>().SetBool("hurt", true);
         if (Hp == 0)
         {
-            GetComponentInChildren<Animator>().SetBool("running", false);
-            GetComponentInChildren<Animator>().SetBool("hurt", true);
             hurt = true;
             Destroy(gameObject);
         }

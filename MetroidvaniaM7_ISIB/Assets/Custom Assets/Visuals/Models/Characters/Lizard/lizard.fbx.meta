@@ -1,11 +1,77 @@
 fileFormatVersion: 2
 guid: 344cb4fe9a942df4cb380e2704b925f4
 ModelImporter:
-  serializedVersion: 19300
-  internalIDToNameTable: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm.L
+    100002: Arm.R
+    100004: BackLower
+    100006: BackUpper
+    100008: Fingers.L
+    100010: Fingers.R
+    100012: Foot.L
+    100014: Foot.R
+    100016: Forearm.L
+    100018: Forearm.R
+    100020: Hand.L
+    100022: Hand.R
+    100024: Head
+    100026: Hips
+    100028: Jaw
+    100030: //RootNode
+    100032: Lizard_Armature_Obj
+    100034: Lizard_Obj
+    100036: Neck
+    100038: ROOT
+    100040: Shin.L
+    100042: Shin.R
+    100044: Tail
+    100046: Tail.001
+    100048: Tail.002
+    100050: Thigh.L
+    100052: Thigh.R
+    100054: Toes.L
+    100056: Toes.R
+    100058: Tongue
+    100060: UBERROOT
+    400000: Arm.L
+    400002: Arm.R
+    400004: BackLower
+    400006: BackUpper
+    400008: Fingers.L
+    400010: Fingers.R
+    400012: Foot.L
+    400014: Foot.R
+    400016: Forearm.L
+    400018: Forearm.R
+    400020: Hand.L
+    400022: Hand.R
+    400024: Head
+    400026: Hips
+    400028: Jaw
+    400030: //RootNode
+    400032: Lizard_Armature_Obj
+    400034: Lizard_Obj
+    400036: Neck
+    400038: ROOT
+    400040: Shin.L
+    400042: Shin.R
+    400044: Tail
+    400046: Tail.001
+    400048: Tail.002
+    400050: Thigh.L
+    400052: Thigh.R
+    400054: Toes.L
+    400056: Toes.R
+    400058: Tongue
+    400060: UBERROOT
+    2100000: Material
+    4300000: Lizard_Obj
+    9500000: //RootNode
+    13700000: Lizard_Obj
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -38,7 +104,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -46,19 +111,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -67,10 +131,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -80,16 +144,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
