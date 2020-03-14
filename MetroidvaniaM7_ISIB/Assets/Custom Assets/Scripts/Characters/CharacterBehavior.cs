@@ -8,7 +8,7 @@ public class CharacterBehavior : MonoBehaviour
     int hp;
     float moveSpeed;
     float jumpPower;
-    public enum AtkType { slash, bite }
+    public enum AtkType { tailHit, bite, FireBall }
 
     public int MaxHp { get => maxHp; protected set => maxHp = value; }
     public int Hp { get => hp; protected set => hp = value; }
