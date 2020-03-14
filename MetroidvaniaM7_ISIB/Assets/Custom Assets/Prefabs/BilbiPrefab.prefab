@@ -380,6 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240701}
+  - component: {fileID: 8717146174837538563}
   m_Layer: 0
   m_Name: Tail.006
   m_TagString: Untagged
@@ -402,6 +403,19 @@ Transform:
   m_Father: {fileID: 2083812963635240579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8717146174837538563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.06}
+  m_Center: {x: 0, y: 0, z: 0.03}
 --- !u!1 &2083812963635069663
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240703}
+  - component: {fileID: 4667455673980748393}
   m_Layer: 0
   m_Name: Tail.007
   m_TagString: Untagged
@@ -432,6 +447,19 @@ Transform:
   m_Father: {fileID: 2083812963635240701}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4667455673980748393
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.06}
+  m_Center: {x: 0, y: 0, z: 0.025}
 --- !u!1 &2083812963635069665
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240577}
+  - component: {fileID: 3515165209517192771}
   m_Layer: 0
   m_Name: Tail.004
   m_TagString: Untagged
@@ -463,6 +492,19 @@ Transform:
   m_Father: {fileID: 2083812963635240583}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3515165209517192771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.08}
+  m_Center: {x: 0, y: 0, z: 0.03}
 --- !u!1 &2083812963635069667
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240579}
+  - component: {fileID: 7289175392396427997}
   m_Layer: 0
   m_Name: Tail.005
   m_TagString: Untagged
@@ -494,6 +537,19 @@ Transform:
   m_Father: {fileID: 2083812963635240577}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7289175392396427997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.024, y: 0.02, z: 0.08}
+  m_Center: {x: -0.003, y: 0, z: 0.03}
 --- !u!1 &2083812963635069669
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240581}
+  - component: {fileID: 1423642462546668096}
   m_Layer: 0
   m_Name: Tail.002
   m_TagString: Untagged
@@ -525,6 +582,19 @@ Transform:
   m_Father: {fileID: 2083812963635240587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1423642462546668096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.025, y: 0.025, z: 0.09}
+  m_Center: {x: 0, y: -0.008, z: 0.037}
 --- !u!1 &2083812963635069671
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240583}
+  - component: {fileID: 3944289741121361031}
   m_Layer: 0
   m_Name: Tail.003
   m_TagString: Untagged
@@ -556,6 +627,19 @@ Transform:
   m_Father: {fileID: 2083812963635240581}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3944289741121361031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.1}
+  m_Center: {x: 0, y: -0.005, z: 0.03}
 --- !u!1 &2083812963635069673
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240585}
+  - component: {fileID: 4173455570126073729}
   m_Layer: 0
   m_Name: Tail.000
   m_TagString: Untagged
@@ -587,6 +672,19 @@ Transform:
   m_Father: {fileID: 2083812963635240797}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4173455570126073729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.04, y: 0.04, z: 0.14}
+  m_Center: {x: 0, y: -0.01, z: 0.01}
 --- !u!1 &2083812963635069675
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240587}
+  - component: {fileID: 1311848751697031025}
   m_Layer: 0
   m_Name: Tail.001
   m_TagString: Untagged
@@ -618,6 +717,19 @@ Transform:
   m_Father: {fileID: 2083812963635240585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1311848751697031025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.03, z: 0.1}
+  m_Center: {x: 0, y: -0.01, z: 0.04}
 --- !u!1 &2083812963635069677
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +1003,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083812963635240749}
+  - component: {fileID: 6784124617356037545}
   m_Layer: 0
   m_Name: Bilby_Arma_Obj
   m_TagString: Untagged
@@ -914,6 +1027,25 @@ Transform:
   m_Father: {fileID: 3846534619630494256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
+--- !u!95 &6784124617356037545
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083812963635069709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 4a760d06c14f5a9498f44b62e3366be1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 00fd6978141ff18478ef9f7fb5a68233, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2083812963635069711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2197,15 @@ MonoBehaviour:
   dashSpeed: 15
   biteCollider: {fileID: 397485499986840626}
   headCollider: {fileID: 1940490409}
+  tailCollider:
+  - {fileID: 4173455570126073729}
+  - {fileID: 1311848751697031025}
+  - {fileID: 1423642462546668096}
+  - {fileID: 3944289741121361031}
+  - {fileID: 3515165209517192771}
+  - {fileID: 7289175392396427997}
+  - {fileID: 8717146174837538563}
+  - {fileID: 4667455673980748393}
   Hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -2080,5 +2221,7 @@ MonoBehaviour:
   fallMultiplier: 2.5
   speedJumpMultiplier: 1.5
   dashTime: 0.1
-  timeCouldownDash: 4
-  maxDurationBite: 0
+  timecooldownDash: 4
+  maxDurationBite: 0.2
+  maxDurationTail: 0.2
+  maxDurationSmell: 3.5

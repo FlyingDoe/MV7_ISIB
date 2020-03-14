@@ -13,6 +13,7 @@ public class PlayerBehavior : CharacterBehavior
     [SerializeField] float dashSpeed;
     [SerializeField] Collider biteCollider;
     [SerializeField] Collider headCollider;
+    [SerializeField] Collider[] tailCollider;
 
     public Image[] Hearts;
     public Sprite fullHeart;
@@ -24,7 +25,9 @@ public class PlayerBehavior : CharacterBehavior
     public float timecooldownDash;
     public float maxDurationBite;
     public float maxDurationTail;
+    public float maxDurationSmell;
 
+    private float durationSmell;
     private float durationBite;
     private float durationTail;
     private float startDashTime;
@@ -97,15 +100,26 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
+                    GetComponentInChildren<Animator>().SetBool("atk1", true);
                     state = "ATK_MELEE_BITE";
                 }
 
                 if (Input.GetKeyDown(KeyCode.R)) //ATK Tail A CHANGER LES COLLIDER 
                 {
-                    biteCollider.enabled = true;
-                    headCollider.enabled = false;
+                    foreach (var collider in tailCollider)
+                    {
+                        collider.enabled = true;
+                    }
                     durationTail = maxDurationTail;
-                    state = "ATK_MELEE_Tail";
+                    GetComponentInChildren<Animator>().SetBool("atk2", true);
+                    state = "ATK_MELEE_TAIL";
+                }
+
+                if (Input.GetKeyDown(KeyCode.J)) //ATK Tail A CHANGER LES COLLIDER 
+                {
+                    durationSmell = maxDurationSmell;
+                    GetComponentInChildren<Animator>().SetBool("smelll", true);
+                    state = "SMELL";
                 }
                 break;
 
@@ -141,15 +155,19 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
+                    GetComponentInChildren<Animator>().SetBool("atk1", true);
                     state = "ATK_MELEE_BITE";
                 }
 
                 if (Input.GetKeyDown(KeyCode.R)) //ATK Tail A CHANGER LES COLLIDER 
                 {
-                    biteCollider.enabled = true;
-                    headCollider.enabled = false;
+                    foreach (var collider in tailCollider)
+                    {
+                        collider.enabled = true;
+                    }
                     durationTail = maxDurationTail;
-                    state = "ATK_MELEE_Tail";
+                    GetComponentInChildren<Animator>().SetBool("atk2", true);
+                    state = "ATK_MELEE_TAIL";
                 }
 
                 break;
@@ -178,6 +196,7 @@ public class PlayerBehavior : CharacterBehavior
 
             case "ATK_MELEE_BITE":
                 durationBite -= Time.deltaTime;
+                GetComponentInChildren<Animator>().SetBool("atk1", false);
                 if (durationBite <= 0)
                 {
                     biteCollider.enabled = false;
@@ -197,12 +216,16 @@ public class PlayerBehavior : CharacterBehavior
 
                 break;
 
-            case "ATK_MELEE_Tail":
+            case "ATK_MELEE_TAIL":
                 durationTail -= Time.deltaTime;
+                GetComponentInChildren<Animator>().SetBool("atk2", false);
                 if (durationTail <= 0)
                 {
-                    biteCollider.enabled = false;
-                    headCollider.enabled = true;
+                    foreach (var collider in tailCollider)
+                    {
+                        collider.enabled = false;
+                    }
+
                     isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
                     if (isGrounded)
                     {
@@ -216,51 +239,33 @@ public class PlayerBehavior : CharacterBehavior
                 }
                 break;
 
+
+            case "SMELL":
+                durationSmell -= Time.deltaTime;
+                GetComponentInChildren<Animator>().SetBool("smelll", false);
+                if (durationSmell <= 0)
+                {
+                    Debug.Log("HERE");
+                    state = "IDLE";                    
+                }
+                break;
+
             case "ATK_DISTANCE_FIREBALL":
 
-                break;
+               break;
+
         }
 
     }
 
     private void isIdle(bool isGrounded)
     {
-        if (isGrounded && state != "DASH" && state != "ATK_MELEE")
+        if (isGrounded && state != "DASH" && state != "ATK_MELEE_BITE" && state != "ATK_MELEE_TAIL" && state != "ATK_DISTANCE_FIREBALL" && state != "SMELL")
         {
             state = "IDLE";
         }
          
     }
-
-
-    // Update calcule du nombre de coeur
-    //void Update()
-    //{
-
-    //    if (Hp > numOfHearts)
-    //    {
-    //        Hp = numOfHearts;
-    //    }
-    //    for (int i = 0; i < Hearts.Length; i++)
-    //    {
-    //        if (i < Hp)
-    //        {
-    //            Hearts[i].sprite = fullHeart;
-    //        } else
-    //        {
-    //            Hearts[i].sprite = emptyHeart;
-    //        }
-    //        if (i < numOfHearts)
-    //        {
-    //            Hearts[i].enabled = true;
-    //        } else
-    //        {
-    //            Hearts[i].enabled = false;
-    //        }
-
-    //    }
-    //}
-
  
 
     private int getDashDirection() //8 direction possible
