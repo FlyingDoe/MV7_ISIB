@@ -37,15 +37,7 @@ public class PlayerBehavior : CharacterBehavior
     private int dashDirection;
     private float horizontalMovement;
 
-    private Vector3 previousPosition;
-    private Vector3 currentPosition;
-
     ObjectPooler objectPooler;
-
-    bool IsFalling
-    {
-        get { return currentPosition.y < previousPosition.y; }
-    }
 
     bool IsGrounded
     {
@@ -83,10 +75,6 @@ public class PlayerBehavior : CharacterBehavior
 
     private void FixedUpdate()
     {
-        // we may want to check in which direction it's moving
-        // if any
-        previousPosition = currentPosition;
-        currentPosition = transform.position;
 
         timecooldownDash += Time.deltaTime;
         isIdle();
