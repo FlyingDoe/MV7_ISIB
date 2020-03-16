@@ -28,6 +28,8 @@ public class PlayerBehavior : CharacterBehavior
     public float maxDurationSmell;
     public int numFireBall;
 
+    private Animator animator;
+
     private float durationSmell;
     private float durationBite;
     private float durationTail;
@@ -35,6 +37,9 @@ public class PlayerBehavior : CharacterBehavior
     private int dashDirection;
     private float horizontalMovement;
     private bool isGrounded;
+
+    private Vector3 previousPosition;
+    private Vector3 currentPosition;
 
     ObjectPooler objectPooler;
 
@@ -48,10 +53,17 @@ public class PlayerBehavior : CharacterBehavior
         dashDirection = 6;
         timecooldownDash = 4;
         objectPooler = ObjectPooler.Instance;
+        currentPosition = transform.position;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
+        // we may want to check in which direction it's moving
+        // if any
+        previousPosition = currentPosition;
+        currentPosition = transform.position;
+
         timecooldownDash += Time.deltaTime;
         isIdle(Physics.Raycast(transform.position, Vector3.down, 0.2f));        
         if (PlayerRB.velocity.y < 0)
@@ -70,7 +82,7 @@ public class PlayerBehavior : CharacterBehavior
                 if (Input.GetButtonDown("Jump")) //Project settings input
                 {
                     PlayerRB.AddForce(Vector3.up * JumpPower);
-                    GetComponentInChildren<Animator>().SetBool("jump", true);
+                    animator.SetBool("jump", true);
                     state = "JUMP";
                 }
                 if (Input.GetButton("Horizontal")) //Project settings input
@@ -80,18 +92,18 @@ public class PlayerBehavior : CharacterBehavior
                         transform.eulerAngles = new Vector3(0, 180, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
                         dashDirection = 5;
-                        GetComponentInChildren<Animator>().SetBool("running", true);
+                        animator.SetBool("running", true);
                     } else if (Input.GetAxisRaw("Horizontal") > 0)
                     {
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0); // A CHANGER SI ON NE VEUT PAS SE STOP A H = 0
                         dashDirection = 6;
-                        GetComponentInChildren<Animator>().SetBool("running", true);
+                        animator.SetBool("running", true);
                     } 
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
                 } else
                 {                
-                        GetComponentInChildren<Animator>().SetBool("running", false);                    
+                        animator.SetBool("running", false);                    
                 }
 
                 if (Input.GetButtonDown("Dash") && timecooldownDash >= 4) //Project settings input
@@ -106,7 +118,7 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
-                    GetComponentInChildren<Animator>().SetBool("atk1", true);
+                    animator.SetBool("atk1", true);
                     state = "ATK_MELEE_BITE";
                 }
 
@@ -117,14 +129,14 @@ public class PlayerBehavior : CharacterBehavior
                         collider.enabled = true;
                     }
                     durationTail = maxDurationTail;
-                    GetComponentInChildren<Animator>().SetBool("atk2", true);
+                    animator.SetBool("atk2", true);
                     state = "ATK_MELEE_TAIL";
                 }
 
                 if (Input.GetKeyDown(KeyCode.F)) //ATK Tail A CHANGER LES COLLIDER 
                 {
                     durationSmell = maxDurationSmell;
-                    GetComponentInChildren<Animator>().SetBool("smelll", true);
+                    animator.SetBool("smelll", true);
                     state = "SMELL";
                 }
 
@@ -133,7 +145,7 @@ public class PlayerBehavior : CharacterBehavior
                     if (numFireBall > 0)
                     {
                         numFireBall -= 1;
-                        GetComponentInChildren<Animator>().SetBool("atk1", true);
+                        animator.SetBool("atk1", true);
                         Debug.Log(transform.rotation.y);
                         bool directionRightFireBall = true;
                         if (transform.rotation.y == 1)
@@ -147,12 +159,12 @@ public class PlayerBehavior : CharacterBehavior
                 break;
 
             case "JUMP":
-                GetComponentInChildren<Animator>().SetBool("jump", false);
+                animator.SetBool("jump", false);
                 if (Input.GetButton("Horizontal")) //Project settings input
                 {
                     if (Input.GetAxisRaw("Horizontal") < 0)
                     {
-                        GetComponentInChildren<Animator>().SetBool("running", true);
+                        animator.SetBool("running", true);
                         transform.eulerAngles = new Vector3(0, 180, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
                         dashDirection = 5;
@@ -161,7 +173,7 @@ public class PlayerBehavior : CharacterBehavior
                     {
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
-                        GetComponentInChildren<Animator>().SetBool("running", true);
+                        animator.SetBool("running", true);
                         dashDirection = 6;
                     }
                     Debug.Log("H" + Input.GetAxisRaw("Horizontal"));
@@ -179,7 +191,7 @@ public class PlayerBehavior : CharacterBehavior
                     biteCollider.enabled = true;
                     headCollider.enabled = false;
                     durationBite = maxDurationBite;
-                    GetComponentInChildren<Animator>().SetBool("atk1", true);
+                    animator.SetBool("atk1", true);
                     state = "ATK_MELEE_BITE";
                 }
 
@@ -190,7 +202,7 @@ public class PlayerBehavior : CharacterBehavior
                         collider.enabled = true;
                     }
                     durationTail = maxDurationTail;
-                    GetComponentInChildren<Animator>().SetBool("atk2", true);
+                    animator.SetBool("atk2", true);
                     state = "ATK_MELEE_TAIL";
                 }
                 if (Input.GetKeyDown(KeyCode.G)) 
@@ -198,7 +210,7 @@ public class PlayerBehavior : CharacterBehavior
                     if (numFireBall > 0)
                     {
                         numFireBall -= 1;
-                        GetComponentInChildren<Animator>().SetBool("atk1", true);
+                        animator.SetBool("atk1", true);
                         Debug.Log(transform.rotation.y);
                         bool directionRightFireBall = true;
                         if (transform.rotation.y == 1)
@@ -236,7 +248,7 @@ public class PlayerBehavior : CharacterBehavior
 
             case "ATK_MELEE_BITE":
                 durationBite -= Time.deltaTime;
-                GetComponentInChildren<Animator>().SetBool("atk1", false);
+                animator.SetBool("atk1", false);
                 if (durationBite <= 0)
                 {
                     biteCollider.enabled = false;
@@ -257,7 +269,7 @@ public class PlayerBehavior : CharacterBehavior
 
             case "ATK_MELEE_TAIL":
                 durationTail -= Time.deltaTime;
-                GetComponentInChildren<Animator>().SetBool("atk2", false);
+                animator.SetBool("atk2", false);
                 if (durationTail <= 0)
                 {
                     foreach (var collider in tailCollider)
@@ -281,7 +293,7 @@ public class PlayerBehavior : CharacterBehavior
 
             case "SMELL":
                 durationSmell -= Time.deltaTime;
-                GetComponentInChildren<Animator>().SetBool("smelll", false);
+                animator.SetBool("smelll", false);
                 if (durationSmell <= 0)
                 {
                     Debug.Log("HERE");
