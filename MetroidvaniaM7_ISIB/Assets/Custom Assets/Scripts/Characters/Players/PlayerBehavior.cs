@@ -69,7 +69,6 @@ public class PlayerBehavior : CharacterBehavior
         dashDirection = 6;
         timecooldownDash = 4;
         objectPooler = ObjectPooler.Instance;
-        currentPosition = transform.position;
         animator = GetComponentInChildren<Animator>();
     }
 
