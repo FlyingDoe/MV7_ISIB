@@ -74,7 +74,7 @@ public class PlayerBehavior : CharacterBehavior
         currentPosition = transform.position;
 
         timecooldownDash += Time.deltaTime;
-        isIdle(Physics.Raycast(transform.position, Vector3.down, 0.2f));        
+        isIdle();
         if (PlayerRB.velocity.y < 0)
         {
             PlayerRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -326,9 +326,9 @@ public class PlayerBehavior : CharacterBehavior
 
     }
 
-    private void isIdle(bool isGrounded)
+    private void isIdle()
     {
-        if (isGrounded && state != "DASH" && state != "ATK_MELEE_BITE" && state != "ATK_MELEE_TAIL" && state != "ATK_DISTANCE_FIREBALL" && state != "SMELL")
+        if (IsGrounded && state != "DASH" && state != "ATK_MELEE_BITE" && state != "ATK_MELEE_TAIL" && state != "ATK_DISTANCE_FIREBALL" && state != "SMELL")
         {
             state = "IDLE";
         }
