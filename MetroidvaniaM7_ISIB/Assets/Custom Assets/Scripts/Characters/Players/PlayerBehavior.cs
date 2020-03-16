@@ -18,7 +18,7 @@ public class PlayerBehavior : CharacterBehavior
     public Image[] Hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public string state;
+    public string _state;
     public float fallMultiplier = 2.5f;
     public float speedJumpMultiplier = 20.0f;
     public float dashTime;
@@ -52,6 +52,21 @@ public class PlayerBehavior : CharacterBehavior
         get { return Physics.Raycast(transform.position, Vector3.down, 0.2f); }//VOIR LA BONNE DISTANCE
     }
 
+    string state
+    {
+        get
+        {
+            return _state;
+        }
+        set
+        {
+            if (_state == "JUMP")
+            {
+                    animator.SetTrigger("fall");
+            }
+            _state = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
