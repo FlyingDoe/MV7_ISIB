@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 086fa3aa40dc50a4e93b1d771f4d15dc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _wall: {fileID: 11400000, guid: b16fa824a7ac8004bbedea12113d50ed, type: 2}
+  - _walkablePlatform: {fileID: 11400000, guid: 0a3adb502fda5464c8ab9d8e06944356,
+      type: 2}
+  - _obstaclePlatform: {fileID: 11400000, guid: 62c6f47c76aff644eb65b0592ffc8ac6,
+      type: 2}
+  - _decoration: {fileID: 11400000, guid: 54e5023266155e9468fb60cc02ff2e2e, type: 2}
+  - _stalagmite: {fileID: 11400000, guid: 6b73b77444c7feb41ad684a1c05a07bd, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

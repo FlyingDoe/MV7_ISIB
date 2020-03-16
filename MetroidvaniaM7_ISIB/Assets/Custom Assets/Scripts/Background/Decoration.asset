@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7294968c869f24e83dca609aa901e4, type: 3}
+  m_Name: Decoration
+  m_EditorClassIdentifier: 
+  Type: 3
+  RotationalAbility: 4
+  Meshes:
+  - {fileID: 1282117409599735292, guid: e37de805bad230d41ac533eb0d47e3a0, type: 3}
+  - {fileID: -7557192941062307406, guid: ea530dbef0c2abe49b064d54ed0ba628, type: 3}
+  - {fileID: 4013275331872712965, guid: 20efc44377041a24aa020f53731857bf, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 8402deed1835200418cb7ba53f55af4b, type: 2}
+  - {fileID: 2100000, guid: dc65e4736618c1043b1f16134a6911f6, type: 2}
+  - {fileID: 2100000, guid: e52b482510f3b8f4bba0a29db9820edd, type: 2}
+  - {fileID: 2100000, guid: 9c492c5df145f1f42afa1366168ca229, type: 2}
+  - {fileID: 2100000, guid: 8bebe0df97e029c43a4472e161abbc86, type: 2}
+  - {fileID: 2100000, guid: b1f75f0b622c18a419c9d402244216cb, type: 2}
+  - {fileID: 2100000, guid: 9e86eaee64a62834797b3d17c30533ce, type: 2}
+  NewMaterials:
+  - {fileID: 2100000, guid: 69162317e6e148341be34238ec84bbc6, type: 2}
+  - {fileID: 2100000, guid: 5f06583a2d59f844cb85a4e1bc011040, type: 2}
+  - {fileID: 2100000, guid: 3538a45ec92862f4a9d84c0f21225bca, type: 2}
+  - {fileID: 2100000, guid: 1f91ad4dd9f3665478c580b39f144735, type: 2}
+  - {fileID: 2100000, guid: a03c6a00384dbb04691bddf34fb596d9, type: 2}
+  - {fileID: 2100000, guid: f7a3b2bf1a55c5c40b4f952a258092f6, type: 2}
+  - {fileID: 2100000, guid: 95cc9f5c5d4ddc848b225bfc4ae02187, type: 2}
+  - {fileID: 2100000, guid: b547642f7dc8692489611bcad18084d8, type: 2}
+  - {fileID: 2100000, guid: f38d7d1cbe7d9884bb7c039ec363ad1c, type: 2}
+  - {fileID: 2100000, guid: f5f3653a475538c4bb8db7ec7c627c22, type: 2}
+  - {fileID: 2100000, guid: 45e78e41c1293854791ebdef3118b5ed, type: 2}
+  - {fileID: 2100000, guid: 80d8a64f6fd950348823d2056c0ee8e3, type: 2}
+  - {fileID: 2100000, guid: 93648cd188bf9714e9b3bc0ae5746f0b, type: 2}
+  - {fileID: 2100000, guid: 964286dceba0f784b82abd9b5da45a87, type: 2}
+  - {fileID: 2100000, guid: 189743bb10c654147b57b46b746a219f, type: 2}
+  - {fileID: 2100000, guid: 10a94c8131cf301419f8a0afb59e4db2, type: 2}
+  - {fileID: 2100000, guid: 133f8256d4521da42acc89e5d935bff4, type: 2}
+  - {fileID: 2100000, guid: 23385a5eb92fd3049814d0cc0193bf8c, type: 2}
+  - {fileID: 2100000, guid: 6fcedf11c481b5049b98624b4945d8f5, type: 2}
+  - {fileID: 2100000, guid: 988f88fd5f9fdf94f9f3aee921972185, type: 2}
+  - {fileID: 2100000, guid: 52e6e342f6c4e8c46ba8c1918ba18065, type: 2}
+  TextureTiling: {x: 4, y: 4}

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7294968c869f24e83dca609aa901e4, type: 3}
+  m_Name: Stalagmite
+  m_EditorClassIdentifier: 
+  Type: 4
+  RotationalAbility: 4
+  Meshes:
+  - {fileID: -5576732785290526760, guid: 4cb81ffff69984e4d89fa4667d8209c9, type: 3}
+  - {fileID: 8169648886107443375, guid: 17327c6be2a23a64db3c7ee670dddf5c, type: 3}
+  - {fileID: 405061043120825062, guid: 0f7d05eeaec55764c9e9bb3811ad3dc5, type: 3}
+  - {fileID: -2350973475999030590, guid: 99a1e453fff7018409fb11d59343c72d, type: 3}
+  - {fileID: -1687733036165943974, guid: d4e4a25fdd34e004eb4d296083977296, type: 3}
+  - {fileID: -5361580262129590522, guid: 6c91c0b19a3ed874baf0a4816ef89bf4, type: 3}
+  - {fileID: 1300776676883189437, guid: 667ea5969bd26f4438416292afe4eaea, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 4e6da9320ca74c945b6c998d1210315f, type: 2}
+  - {fileID: 2100000, guid: 4ac886b57ce93cc478c06fe9e7bc3ac0, type: 2}
+  - {fileID: 2100000, guid: 1280d17d8ebd30241afdd1ee5f1ea2bc, type: 2}
+  - {fileID: 2100000, guid: 82547e03092f57c4f909c9b61390ab38, type: 2}
+  - {fileID: 2100000, guid: de5c467d181982f4d93ed769ecf33b40, type: 2}
+  - {fileID: 2100000, guid: f5fd68c52b3a6b44a9a2bede59e5599f, type: 2}
+  - {fileID: 2100000, guid: 6de4777e76482374181bf271194e8925, type: 2}
+  NewMaterials:
+  - {fileID: 2100000, guid: 8009e3be3a1b8c9419dfde7765b91c49, type: 2}
+  - {fileID: 2100000, guid: 8bc5b908f27feaf4e9de69da89566082, type: 2}
+  - {fileID: 2100000, guid: 5216572262508d549b7b0a2fdb98c074, type: 2}
+  - {fileID: 2100000, guid: a9bd5c4800b86a64ebc065d5a6cc3d4b, type: 2}
+  - {fileID: 2100000, guid: 23ed1c8ca8a0e4042b8463660d753b98, type: 2}
+  - {fileID: 2100000, guid: 40ff1ba9b3a5718418652d0691511abb, type: 2}
+  - {fileID: 2100000, guid: dc48599407618004081d90f07d740267, type: 2}
+  - {fileID: 2100000, guid: 2445d0ec7ff2bd54d98d5d04f9bda12d, type: 2}
+  - {fileID: 2100000, guid: a7eeb70d7e5060342945ba971db65b8b, type: 2}
+  - {fileID: 2100000, guid: f2cb7d6d71b1c824f8dd186b47c71659, type: 2}
+  - {fileID: 2100000, guid: e2203532a569714429f12f27099e543e, type: 2}
+  - {fileID: 2100000, guid: cb563e2dee7de2140ad32b4767d591a3, type: 2}
+  - {fileID: 2100000, guid: 8b44f802b586e92488b7c6d2eaf479e3, type: 2}
+  - {fileID: 2100000, guid: 7dc576ef2170b2044b7e8e2be13f0cd8, type: 2}
+  - {fileID: 2100000, guid: 34b77d0e6b473554c91addbbf72f18c5, type: 2}
+  - {fileID: 2100000, guid: 7031ceab9073b6249b9cfc5ab7b270ac, type: 2}
+  - {fileID: 2100000, guid: 7f29399380ee33d49926ba136a8303ae, type: 2}
+  - {fileID: 2100000, guid: a7a3019c16756844a8bbe1d4b215e80e, type: 2}
+  - {fileID: 2100000, guid: 21791962159207a418b54fc7a0191d18, type: 2}
+  - {fileID: 2100000, guid: 6f89ed360a1540c4a883fe2ecbf211b0, type: 2}
+  - {fileID: 2100000, guid: 1971b683632b98c4e913e1a6d6b11006, type: 2}
+  TextureTiling: {x: 3, y: 3}
