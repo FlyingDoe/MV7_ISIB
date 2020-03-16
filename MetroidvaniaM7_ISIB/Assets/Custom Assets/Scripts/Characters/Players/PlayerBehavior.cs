@@ -91,7 +91,7 @@ public class PlayerBehavior : CharacterBehavior
                 if (Input.GetButtonDown("Jump")) //Project settings input
                 {
                     PlayerRB.AddForce(Vector3.up * JumpPower);
-                    animator.SetBool("jump", true);
+                    animator.SetTrigger("jump");
                     state = "JUMP";
                 }
                 if (Input.GetButton("Horizontal")) //Project settings input
@@ -168,7 +168,6 @@ public class PlayerBehavior : CharacterBehavior
                 break;
 
             case "JUMP":
-                animator.SetBool("jump", false);
                 if (Input.GetButton("Horizontal")) //Project settings input
                 {
                     if (Input.GetAxisRaw("Horizontal") < 0)
