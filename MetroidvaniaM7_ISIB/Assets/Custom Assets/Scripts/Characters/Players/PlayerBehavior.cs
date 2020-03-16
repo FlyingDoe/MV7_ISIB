@@ -36,12 +36,21 @@ public class PlayerBehavior : CharacterBehavior
     private float startDashTime;
     private int dashDirection;
     private float horizontalMovement;
-    private bool isGrounded;
 
     private Vector3 previousPosition;
     private Vector3 currentPosition;
 
     ObjectPooler objectPooler;
+
+    bool IsFalling
+    {
+        get { return currentPosition.y < previousPosition.y; }
+    }
+
+    bool IsGrounded
+    {
+        get { return Physics.Raycast(transform.position, Vector3.down, 0.2f); }//VOIR LA BONNE DISTANCE
+    }
 
 
     // Start is called before the first frame update
@@ -233,8 +242,7 @@ public class PlayerBehavior : CharacterBehavior
                     dash(dashDirection);
                 } else { 
                 endDash(dashDirection);
-                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
-                if (isGrounded)                                      
+                if (IsGrounded)
                 {
                     state = "IDLE";
                 } else
@@ -253,8 +261,7 @@ public class PlayerBehavior : CharacterBehavior
                 {
                     biteCollider.enabled = false;
                     headCollider.enabled = true;                
-                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
-                if (isGrounded)
+                if (IsGrounded)
                 {
                     state = "IDLE";
                 }
@@ -277,8 +284,7 @@ public class PlayerBehavior : CharacterBehavior
                         collider.enabled = false;
                     }
 
-                    isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);//VOIR LA BONNE DISTANCE
-                    if (isGrounded)
+                    if (IsGrounded)
                     {
                         state = "IDLE";
                     }
@@ -304,8 +310,7 @@ public class PlayerBehavior : CharacterBehavior
             case "ATK_DISTANCE_FIREBALL":
                 //CREATION DE LA BOULE DE FEU
 
-                isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.2f);
-                if (isGrounded)
+                if (IsGrounded)
                 {
                     state = "IDLE";
                 }
