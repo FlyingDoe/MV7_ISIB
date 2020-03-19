@@ -169,33 +169,37 @@ public static class BackgroundElementsManager
         string matFolder;
         foreach(BackgroundType type in BgParameters.Values)
         {
-            // we find the folder containing the materials
-            // and create a subfolder for the variations
-            matPath = AssetDatabase.GetAssetPath(type.Materials[0]);
-            // TODO: put this someplace else: the correct separator is everyone's business
-            CorrectSeparator = matPath.LastIndexOf(Path.DirectorySeparatorChar) > 0 ? Path.DirectorySeparatorChar : Path.AltDirectorySeparatorChar;
-            int lastSlash = matPath.LastIndexOf(CorrectSeparator);
-            matPath = matPath.Remove(lastSlash);
-            matFolder = matPath + CorrectSeparator + AlternativeMaterialsFolderName;
-            if (!AssetDatabase.IsValidFolder(matFolder))
+            if (!type.ShouldOffsetTexture)
             {
-                AssetDatabase.CreateFolder(matPath, AlternativeMaterialsFolderName);
+                type.NewMaterials = type.Materials;
+            }
 
-                if (isDebugging)
+            else if (type.NewMaterials == null || type.NewMaterials.Count == 0)
+            {
+                // we find the folder containing the materials
+                // and create a subfolder for the variations
+                matPath = AssetDatabase.GetAssetPath(type.Materials[0]);
+                // TODO: put this someplace else: the correct separator is everyone's business
+                CorrectSeparator = matPath.LastIndexOf(Path.DirectorySeparatorChar) > 0 ? Path.DirectorySeparatorChar : Path.AltDirectorySeparatorChar;
+                int lastSlash = matPath.LastIndexOf(CorrectSeparator);
+                matPath = matPath.Remove(lastSlash);
+                matFolder = matPath + CorrectSeparator + AlternativeMaterialsFolderName;
+                if (!AssetDatabase.IsValidFolder(matFolder))
                 {
-                    Debug.Log("creating folder at " + matFolder);
+                    AssetDatabase.CreateFolder(matPath, AlternativeMaterialsFolderName);
+
+                    if (isDebugging)
+                    {
+                        Debug.Log("creating folder at " + matFolder);
+                    }
                 }
-            }
-            // for cleaning up purposes later
-            if (!AlternateMaterialsFoldersPaths.Contains(matFolder))
-            {
-                Debug.Log("adding path " + matFolder);
-                AlternateMaterialsFoldersPaths.Add(matFolder);
-            }
+                // for cleaning up purposes later
+                if (!AlternateMaterialsFoldersPaths.Contains(matFolder))
+                {
+                    Debug.Log("adding path " + matFolder);
+                    AlternateMaterialsFoldersPaths.Add(matFolder);
+                }
 
-            if (type.NewMaterials == null || type.NewMaterials.Count == 0)
-
-            {
                 tiling = type.TextureTiling;
                 foreach (Material mat in type.Materials)
                 {

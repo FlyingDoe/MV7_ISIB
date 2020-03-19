@@ -20,6 +20,7 @@ public class BackgroundType: ScriptableObject
     public List<Material> NewMaterials;
     public Vector2 TextureTiling;
     public bool CanCollide;
+    public bool ShouldOffsetTexture;
 }
 
 public enum BackgroundTypes
