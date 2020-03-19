@@ -103,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8483337970114785692}
   - component: {fileID: 5865533693620351542}
-  - component: {fileID: 7006916255167727135}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -143,19 +142,7 @@ MonoBehaviour:
   _isAspectLocked: 0
   _isRotationScaleLocked: 0
   _unwalkableColliderHeight: 0
---- !u!65 &7006916255167727135
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601169835905388938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  _toBeInitialized: 0
 --- !u!1 &7593516047837467293
 GameObject:
   m_ObjectHideFlags: 0

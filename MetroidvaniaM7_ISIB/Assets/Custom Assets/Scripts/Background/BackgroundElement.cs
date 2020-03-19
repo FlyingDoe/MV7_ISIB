@@ -18,6 +18,9 @@ namespace BackgroundElementsManager
         [SerializeField]
         int _unwalkableColliderHeight;
 
+        [SerializeField]
+        bool _toBeInitialized = true;
+
         GameObject _placeholder;
         GameObject _prettyBg;
         MeshFilter _prettyMesh;
@@ -25,9 +28,10 @@ namespace BackgroundElementsManager
         MeshRenderer _prettyRenderer;
         BoxCollider _unwalkableCollider;
         Vector3 _unwalkableColliderCenter = Vector3.zero;
-        Vector3 _unwalkableColliderSize = Vector3.one;
+        Vector3 _unwalkableColliderSize;
         Vector3 _baseScale;
         float _unwalkableColliderBaseScale;
+        float _unwalkableColliderOffset;
 
         Vector3 currentRotation;
 
@@ -59,16 +63,13 @@ namespace BackgroundElementsManager
 
         /// <summary>
         /// find all the background element's components;
-        /// if already did it, automatically skips it
+        /// if already done, automatically skips it;
+        /// but you can manually tell it to initialize it again anyway
         /// </summary>
         public void Initialize(bool verbose = true)
         {
-            if (_placeholder != null && _prettyBg != null && _prettyMesh != null && _prettyRenderer != null)
+            if (!_toBeInitialized)
             {
-                if (verbose)
-                {
-                    Debug.Log("Trying to get components for the background element of " + gameObject.name + " but it's already been done before.");
-                }
                 return;
             }
 
@@ -103,9 +104,12 @@ namespace BackgroundElementsManager
             {
                 _unwalkableCollider = GetComponent<BoxCollider>();
                 _unwalkableColliderBaseScale = _unwalkableCollider.size.y;
+                _unwalkableColliderOffset = _unwalkableCollider.center.y;
             }
 
             _baseScale = _prettyBg.transform.localScale;
+
+            _toBeInitialized = false;
         }
 
         public void ChangeMesh(Mesh mesh)
@@ -146,18 +150,20 @@ namespace BackgroundElementsManager
 
         public void SetUnwalkableCollider()
         {
-            if (_unwalkableCollider != null)
+            if (_unwalkableCollider == null)
             {
-                _unwalkableCollider.enabled = true;
+                Debug.LogError("You're trying to set the unwalkable collider for " + gameObject.name + ", who doesn't have one, or at least doesn't know it.");
+                return;
             }
 
-            if (_unwalkableColliderHeight != 0)
-            {
-                _unwalkableColliderCenter.y = (_unwalkableColliderHeight / 2) * _unwalkableColliderBaseScale;
-                _unwalkableCollider.center = _unwalkableColliderCenter;
-                _unwalkableColliderSize.y = _unwalkableColliderHeight * _unwalkableColliderBaseScale;
-                _unwalkableCollider.size = _unwalkableColliderSize;
-            }
+            _unwalkableCollider.enabled = true;
+
+            _unwalkableColliderCenter.y = (((float) _unwalkableColliderHeight / 2) * _unwalkableColliderBaseScale) - 1 +
+                (_unwalkableColliderHeight == 1 ? _unwalkableColliderOffset + .5f : _unwalkableColliderOffset);
+            _unwalkableCollider.center = _unwalkableColliderCenter;
+            _unwalkableColliderSize = _unwalkableCollider.size;
+            _unwalkableColliderSize.y = _unwalkableColliderHeight * _unwalkableColliderBaseScale;
+            _unwalkableCollider.size = _unwalkableColliderSize;
         }
 
         public void DeactivateUnwalkableCollider()

@@ -143,6 +143,7 @@ MonoBehaviour:
   _isAspectLocked: 0
   _isRotationScaleLocked: 0
   _unwalkableColliderHeight: 0
+  _toBeInitialized: 0
 --- !u!1 &7593516047837467293
 GameObject:
   m_ObjectHideFlags: 0

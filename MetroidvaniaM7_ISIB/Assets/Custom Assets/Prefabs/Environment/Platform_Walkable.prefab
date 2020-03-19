@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2082856518221752806}
   - component: {fileID: 2082856518221752807}
-  - component: {fileID: 2082856518221752800}
   m_Layer: 0
   m_Name: Platform_Walkable
   m_TagString: Untagged
@@ -50,19 +49,7 @@ MonoBehaviour:
   _isAspectLocked: 0
   _isRotationScaleLocked: 0
   _unwalkableColliderHeight: 0
---- !u!65 &2082856518221752800
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082856518221752802}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  _toBeInitialized: 0
 --- !u!65 &956246664254413599
 BoxCollider:
   m_ObjectHideFlags: 0
