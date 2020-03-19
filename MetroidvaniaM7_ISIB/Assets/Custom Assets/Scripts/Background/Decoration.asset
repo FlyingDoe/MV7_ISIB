@@ -23,31 +23,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4e6da9320ca74c945b6c998d1210315f, type: 2}
   - {fileID: 2100000, guid: 4ac886b57ce93cc478c06fe9e7bc3ac0, type: 2}
   - {fileID: 2100000, guid: 1280d17d8ebd30241afdd1ee5f1ea2bc, type: 2}
-  - {fileID: 2100000, guid: 82547e03092f57c4f909c9b61390ab38, type: 2}
-  - {fileID: 2100000, guid: de5c467d181982f4d93ed769ecf33b40, type: 2}
-  - {fileID: 2100000, guid: f5fd68c52b3a6b44a9a2bede59e5599f, type: 2}
-  - {fileID: 2100000, guid: 6de4777e76482374181bf271194e8925, type: 2}
-  NewMaterials:
-  - {fileID: 2100000, guid: 38ba41450d1ac4144a3f4be2177b689a, type: 2}
-  - {fileID: 2100000, guid: 9f869756be318e648b80763887b66078, type: 2}
-  - {fileID: 2100000, guid: 44148ad7854dc0c42a156447c3576cbc, type: 2}
-  - {fileID: 2100000, guid: e2ace7b8f84bad548bd221a1b66cff41, type: 2}
-  - {fileID: 2100000, guid: 4a1c268cf2b9cd84b856d43691b9da52, type: 2}
-  - {fileID: 2100000, guid: 44e52fdbb20b3b84f900cc696ee72095, type: 2}
-  - {fileID: 2100000, guid: a73a34d7081b3c64e8e9251814e4dd70, type: 2}
-  - {fileID: 2100000, guid: b3dfbe98405260e498901040bca71f7d, type: 2}
-  - {fileID: 2100000, guid: 62278db6034f34945bfef2369d0b518f, type: 2}
-  - {fileID: 2100000, guid: 41bb7e13463af864fbb36a79da26363f, type: 2}
-  - {fileID: 2100000, guid: 9a8f5110c06c403439add1fc43169691, type: 2}
-  - {fileID: 2100000, guid: 1fa5207c3e5d69143ae83e5933f7a29b, type: 2}
-  - {fileID: 2100000, guid: 35bfe9e5353a2a643ada4d13d08944e0, type: 2}
-  - {fileID: 2100000, guid: d72a50f38a9e4024ebef03ebf2ef39c7, type: 2}
-  - {fileID: 2100000, guid: 5035dedc02739ea4aaed56461cf52328, type: 2}
-  - {fileID: 2100000, guid: 35a8ca802cd6da7458ea04a40ea4eed6, type: 2}
-  - {fileID: 2100000, guid: 872c7ee8c9455674687696a1943e644d, type: 2}
-  - {fileID: 2100000, guid: 99f9afd023ea9364789bd4dd92cad367, type: 2}
-  - {fileID: 2100000, guid: 698f414453a9a6e4bbe605993a146bae, type: 2}
-  - {fileID: 2100000, guid: 7cbc84cc965fee846908053368515f5c, type: 2}
-  - {fileID: 2100000, guid: a75f2b87459fe0749aafd0e4f3e5e5f5, type: 2}
+  NewMaterials: []
   TextureTiling: {x: 4, y: 4}
-  canCollide: 1
+  CanCollide: 1
+  ShouldOffsetTexture: 1

@@ -21,34 +21,10 @@ MonoBehaviour:
   - {fileID: -1947579508572037973, guid: c06bb2b5a5b146f4fa4f348c3be860af, type: 3}
   - {fileID: 1103300912910240513, guid: 7d494b909a7a72849a9a9a68302287e4, type: 3}
   Materials:
-  - {fileID: 2100000, guid: 8402deed1835200418cb7ba53f55af4b, type: 2}
-  - {fileID: 2100000, guid: dc65e4736618c1043b1f16134a6911f6, type: 2}
-  - {fileID: 2100000, guid: e52b482510f3b8f4bba0a29db9820edd, type: 2}
-  - {fileID: 2100000, guid: 9c492c5df145f1f42afa1366168ca229, type: 2}
-  - {fileID: 2100000, guid: 8bebe0df97e029c43a4472e161abbc86, type: 2}
   - {fileID: 2100000, guid: b1f75f0b622c18a419c9d402244216cb, type: 2}
   - {fileID: 2100000, guid: 9e86eaee64a62834797b3d17c30533ce, type: 2}
-  NewMaterials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8bebe0df97e029c43a4472e161abbc86, type: 2}
+  NewMaterials: []
   TextureTiling: {x: 1, y: 1}
-  canCollide: 1
+  CanCollide: 1
+  ShouldOffsetTexture: 1

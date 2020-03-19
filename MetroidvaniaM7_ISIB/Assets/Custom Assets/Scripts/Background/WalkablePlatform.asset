@@ -21,34 +21,10 @@ MonoBehaviour:
   - {fileID: -1947579508572037973, guid: c06bb2b5a5b146f4fa4f348c3be860af, type: 3}
   - {fileID: 1103300912910240513, guid: 7d494b909a7a72849a9a9a68302287e4, type: 3}
   Materials:
-  - {fileID: 2100000, guid: c16feef879c743b48b6c264fc35ebc96, type: 2}
-  - {fileID: 2100000, guid: 105353e803091ff41bea78f12ac7ce94, type: 2}
-  - {fileID: 2100000, guid: 1f2ea66a97281ca4ba392999b530def7, type: 2}
   - {fileID: 2100000, guid: 40229c4412185f8489fe82917083f9f3, type: 2}
-  - {fileID: 2100000, guid: fb5f5a7584390ab4ebbba58e97bd57d6, type: 2}
   - {fileID: 2100000, guid: 04aa80096223c0a419834c25d32df443, type: 2}
-  - {fileID: 2100000, guid: f7566074cfdd1464ea26dbf3cd5c14bf, type: 2}
-  NewMaterials:
-  - {fileID: 2100000, guid: edb89455b05f9df4788b0679bbe4e6af, type: 2}
-  - {fileID: 2100000, guid: 51d4d93a7dcbc6c46a39faa11c1a65a4, type: 2}
-  - {fileID: 2100000, guid: 4d010c790288c2b4780f3f8621f5caa9, type: 2}
-  - {fileID: 2100000, guid: 8493d3d174f5ca042ad24bcd5fd3fd0f, type: 2}
-  - {fileID: 2100000, guid: 2441a40ac4b6fd54cb5b30c6de0a21fa, type: 2}
-  - {fileID: 2100000, guid: 5219e8496353b0a4198d3d2e4076de41, type: 2}
-  - {fileID: 2100000, guid: e2d3a6021eca1624984a92a9d6d45f7f, type: 2}
-  - {fileID: 2100000, guid: 5900e986264552e4bb40c38135e343da, type: 2}
-  - {fileID: 2100000, guid: 622049e5e8f4b7c4e8d9528bdd0e220c, type: 2}
-  - {fileID: 2100000, guid: e00a9cf1e1d840744bdcc1f2cf2a5701, type: 2}
-  - {fileID: 2100000, guid: 0d3fc4fcc1ce62b468dada81fada368c, type: 2}
-  - {fileID: 2100000, guid: 3038b797b7f6230459fd9cecab16798a, type: 2}
-  - {fileID: 2100000, guid: 9713c456d1a1dec4fa4cbdcd41e207a4, type: 2}
-  - {fileID: 2100000, guid: eb0a30db502aa8b4491d2d1f4302150e, type: 2}
-  - {fileID: 2100000, guid: aa9e4aedf8980314bb60664f8154035b, type: 2}
-  - {fileID: 2100000, guid: c34ab46187663b34293419e12667e176, type: 2}
-  - {fileID: 2100000, guid: 3c0f0e8dc078cf74faddfa83d8550a4f, type: 2}
-  - {fileID: 2100000, guid: 8ed0af83c6d9c6f409a50cda7f638c59, type: 2}
-  - {fileID: 2100000, guid: 0c2be5829d5678c4d8910d03b097bfe5, type: 2}
-  - {fileID: 2100000, guid: 765b9ec95ff50134e9e5a983f79c559d, type: 2}
-  - {fileID: 2100000, guid: 1f17d99cae5abfd4e93809277ea08e05, type: 2}
+  - {fileID: 2100000, guid: fb5f5a7584390ab4ebbba58e97bd57d6, type: 2}
+  NewMaterials: []
   TextureTiling: {x: 2, y: 2}
-  canCollide: 1
+  CanCollide: 1
+  ShouldOffsetTexture: 1
