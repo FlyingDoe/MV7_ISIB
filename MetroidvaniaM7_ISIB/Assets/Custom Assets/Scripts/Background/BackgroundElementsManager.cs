@@ -172,6 +172,12 @@ public class BackgroundElementsManager
                     element.ChangeRotation(RandomRotationValue(1));
                     break;
             }
+
+            // choose random scale
+            if (BgParameters[currentType].Scalability != 0)
+            {
+                element.ChangeScale(Random.Range(-BgParameters[currentType].Scalability/100, BgParameters[currentType].Scalability/100));
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class BackgroundElement : MonoBehaviour
     bool _isAspectLocked;
 
     [SerializeField]
-    bool _isRotationLocked;
+    bool _isRotationScaleLocked;
 
     [SerializeField]
     int _unwalkableColliderHeight;
@@ -24,6 +24,8 @@ public class BackgroundElement : MonoBehaviour
     BoxCollider _unwalkableCollider;
     Vector3 _unwalkableColliderCenter = Vector3.zero;
     Vector3 _unwalkableColliderSize = Vector3.one;
+    Vector3 _baseScale;
+    float _unwalkableColliderBaseScale;
 
     Vector3 currentRotation;
 
@@ -48,7 +50,7 @@ public class BackgroundElement : MonoBehaviour
     {
         get
         {
-            return _isRotationLocked;
+            return _isRotationScaleLocked;
         }
     }
     #endregion  
@@ -92,7 +94,10 @@ public class BackgroundElement : MonoBehaviour
             if (_type == BackgroundTypes.ObstaclePlatform)
         {
             _unwalkableCollider = GetComponent<BoxCollider>();
+            _unwalkableColliderBaseScale = _unwalkableCollider.size.y;
         }
+
+        _baseScale = _prettyBg.transform.localScale;
     }
 
     public void ChangeMesh(Mesh mesh)
@@ -103,6 +108,11 @@ public class BackgroundElement : MonoBehaviour
         {
             ((MeshCollider)_prettyCollider).sharedMesh = mesh;
         }
+    }
+
+    public void ChangeScale(int scale)
+    {
+        _prettyBg.transform.localScale = _baseScale + (_baseScale * scale);
     }
 
     public void ChangeMat(Material mat)
@@ -128,20 +138,26 @@ public class BackgroundElement : MonoBehaviour
 
     public void SetUnwalkableCollider()
     {
-        _unwalkableCollider.enabled = true;
+        if (_unwalkableCollider != null)
+        {
+            _unwalkableCollider.enabled = true;
+        }
 
         if (_unwalkableColliderHeight != 0)
         {
-            _unwalkableColliderCenter.y = _unwalkableColliderHeight / 2;
+            _unwalkableColliderCenter.y = (_unwalkableColliderHeight / 2) * _unwalkableColliderBaseScale;
             _unwalkableCollider.center = _unwalkableColliderCenter;
-            _unwalkableColliderSize.y = _unwalkableColliderHeight;
+            _unwalkableColliderSize.y = _unwalkableColliderHeight * _unwalkableColliderBaseScale;
             _unwalkableCollider.size = _unwalkableColliderSize;
         }
     }
 
     public void DeactivateUnwalkableCollider()
     {
-        _unwalkableCollider.enabled = false;
+        if(_unwalkableCollider != null)
+        {
+            _unwalkableCollider.enabled = false;
+        }
     }
 
     public bool CheckPrettyState()

@@ -12,6 +12,8 @@ public class BackgroundType: ScriptableObject
 {
     public BackgroundTypes Type;
     public RotationalAbility RotationalAbility;
+    [Tooltip("Scalability in % either way; with a scalability of 20, an object can be from 80% to 120% big")]
+    public int Scalability;
     public List<Mesh> Meshes;
     public List<Material> Materials;
     public List<Material> NewMaterials;
