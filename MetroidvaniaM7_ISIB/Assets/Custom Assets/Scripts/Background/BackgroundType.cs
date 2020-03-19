@@ -7,36 +7,39 @@ using UnityEngine;
 // mostly used for level design, I think
 // like to switch between difficulty presets for example
 // or graphical themes
-[CreateAssetMenu(fileName = "BackgroundType", menuName = "ScriptableObjects/Background Type", order = 1)]
-public class BackgroundType: ScriptableObject
+namespace BackgroundElementsManager
 {
-    public BackgroundTypes Type;
-    public RotationalAbility RotationalAbility;
-    [Tooltip("Scalability in % either way; with a scalability of 20, an object can be from 80% to 120% big")]
-    public int Scalability;
-    public List<Mesh> Meshes;
-    public List<Material> Materials;
-    [Tooltip("Different versions of the materials created through script")]
-    public List<Material> NewMaterials;
-    public Vector2 TextureTiling;
-    public bool CanCollide;
-    public bool ShouldOffsetTexture;
-}
+    [CreateAssetMenu(fileName = "BackgroundType", menuName = "ScriptableObjects/Background Type", order = 1)]
+    public class BackgroundType : ScriptableObject
+    {
+        public BackgroundTypes Type;
+        public RotationalAbility RotationalAbility;
+        [Tooltip("Scalability in % either way; with a scalability of 20, an object can be from 80% to 120% big")]
+        public int Scalability;
+        public List<Mesh> Meshes;
+        public List<Material> Materials;
+        [Tooltip("Different versions of the materials created through script")]
+        public List<Material> NewMaterials;
+        public Vector2 TextureTiling;
+        public bool CanCollide;
+        public bool ShouldOffsetTexture;
+    }
 
-public enum BackgroundTypes
-{
-    WalkablePlatform,
-    ObstaclePlatform,
-    Wall,
-    Decoration,
-    Stalagmite
-};
+    public enum BackgroundTypes
+    {
+        WalkablePlatform,
+        ObstaclePlatform,
+        Wall,
+        Decoration,
+        Stalagmite
+    };
 
-public enum RotationalAbility
-{
-    None,
-    By180Degrees,
-    By90Degrees,
-    By30Degrees,
-    Anything
+    public enum RotationalAbility
+    {
+        None,
+        By180Degrees,
+        By90Degrees,
+        By30Degrees,
+        Anything
+    }
 }
