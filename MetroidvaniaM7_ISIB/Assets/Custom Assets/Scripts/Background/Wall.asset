@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   RotationalAbility: 1
+  Scalability: 0
   Meshes:
   - {fileID: -5653830551221274593, guid: 0dcd451c5efce4148b9761e24996e1c0, type: 3}
   - {fileID: 7952271828662247766, guid: 34089832bdbe77e44a9bf521661d3a9e, type: 3}
   - {fileID: -1947579508572037973, guid: c06bb2b5a5b146f4fa4f348c3be860af, type: 3}
+  - {fileID: 1103300912910240513, guid: 7d494b909a7a72849a9a9a68302287e4, type: 3}
   Materials:
   - {fileID: 2100000, guid: 8402deed1835200418cb7ba53f55af4b, type: 2}
   - {fileID: 2100000, guid: dc65e4736618c1043b1f16134a6911f6, type: 2}
@@ -49,3 +51,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   TextureTiling: {x: 1, y: 1}
+  canCollide: 1

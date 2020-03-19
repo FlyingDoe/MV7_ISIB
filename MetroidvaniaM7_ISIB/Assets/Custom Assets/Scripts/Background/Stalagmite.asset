@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   RotationalAbility: 4
+  Scalability: 20
   Meshes:
   - {fileID: -5576732785290526760, guid: 4cb81ffff69984e4d89fa4667d8209c9, type: 3}
   - {fileID: 8169648886107443375, guid: 17327c6be2a23a64db3c7ee670dddf5c, type: 3}
