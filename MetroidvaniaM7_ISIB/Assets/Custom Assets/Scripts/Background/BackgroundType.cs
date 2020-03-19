@@ -18,6 +18,7 @@ public class BackgroundType: ScriptableObject
     public List<Material> Materials;
     public List<Material> NewMaterials;
     public Vector2 TextureTiling;
+    public bool CanCollide;
 }
 
 public enum BackgroundTypes
