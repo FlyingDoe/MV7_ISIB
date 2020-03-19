@@ -27,19 +27,16 @@ namespace BackgroundElementsManager
         // (Assets > Create > Scriptable Object > Background Type)
         // and fill it out appropriately
         // - create a prefab composed of an Empty with the BackgroundElement script, 
-        // one BoxCollider and a Rigidbody if it should block out the space above it, 
+        // one BoxCollider if it should block out the space above it, 
         // and with as children:
         //// - one placeholder tagged EditorOnly containing:
         ////// - a Mesh Filter of a simple geometric shape
         ////// - a Mesh Renderer
-        ////// - a Collider (if canCollide)
-        ////// - a Rigidbody (if Collider)
         //// - and one pretty-looking object containing:
         ////// - a Mesh Filter of (one of) the final Mesh
         ////// - a Mesh Renderer
         ////// - a Collider (either an automatic convex mesh collider or a geometric one)
         ////// (if canCollide)
-        ////// - a Rigidbody (if Collider)
 
         [MenuItem("CustomScripts/BackgroundElements/InitializeAll   ", false, 0)]
         public static void InitializeAll()
