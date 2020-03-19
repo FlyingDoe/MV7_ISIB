@@ -40,7 +40,16 @@ public static class BackgroundElementsManager
     ////// (if canCollide)
     ////// - a Rigidbody (if Collider)
 
-    [MenuItem("CustomScripts/BackgroundElements/InitializeManager", false, 0)]
+    [MenuItem("CustomScripts/BackgroundElements/InitializeAll   ", false, 0)]
+    public static void InitializeAll()
+    {
+        InitializeManager();
+        FindAllElements();
+        InitializeAllElements();
+    }
+
+
+    [MenuItem("CustomScripts/BackgroundElements/More/InitializeManager", false, 200)]
     public static void InitializeManager()
     {
         BackgroundType[] types = Resources.FindObjectsOfTypeAll<BackgroundType>();
@@ -119,14 +128,19 @@ public static class BackgroundElementsManager
         }
     }
 
+    [MenuItem("CustomScripts/BackgroundElements/More/Find All Elements", false, 200)]
+    public static void FindAllElements()
+    {
+        BgElements = Resources.FindObjectsOfTypeAll<BackgroundElement>();
+    }
+
     /// <summary> 
     /// get a list of all background elements in the scene
     /// and initialize them
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/InitializeElements", false, 1)]
+    [MenuItem("CustomScripts/BackgroundElements/More/Initialize Elements", false, 200)]
     public static void InitializeAllElements()
     {
-        BgElements = Resources.FindObjectsOfTypeAll<BackgroundElement>();
         foreach (BackgroundElement element in BgElements)
         {
             element.Initialize(verbose: false);
@@ -145,7 +159,7 @@ public static class BackgroundElementsManager
     /// <summary>
     /// randomize background elements' pretty look
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/RandomizeBackground", false, 2)]
+    [MenuItem("CustomScripts/BackgroundElements/RandomizeBackground", false, 50)]
     public static void RandomizeBackground()
     {
         BackgroundTypes currentType;
@@ -200,10 +214,24 @@ public static class BackgroundElementsManager
         }
     }
 
+
+    /// <summary>
+    /// switch between geometric and pretty views
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/Switch view", false, 50)]
+    public static void SwitchView()
+    {
+        foreach (BackgroundElement element in BgElements)
+        {
+            element.ActivatePrettyBackground(!element.CheckPrettyState());
+        }
+    }
+
+
     /// <summary>
     /// reset meshes to simple geometric ones
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/ResetBackground", false, 98)]
+    [MenuItem("CustomScripts/BackgroundElements/More/Reset Background", false, 200)]
     public static void ResetElements()
     {
         foreach (BackgroundElement element in BgElements)
@@ -230,11 +258,26 @@ public static class BackgroundElementsManager
         {
             type.NewMaterials.Clear();
         }
+    }
+
+    /// <summary>
+    /// reset manager's types list and each type info to default empty state
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/More/ResetManager", false, 200)]
+    public static void ResetManager()
+    {
+        //TODO: add a warning that ResetElems should be done before this one
+        // because it loses the connections they need
         BgParameters.Clear();
     }
 
-    // TODO: add a way to delete the alternative versions of the materials using AssetDatabase.DeleteAsset
-    // but add a confirmation window before executing it
+    [MenuItem("CustomScripts/BackgroundElements/Reset All", false, 50)]
+    public static void ResetAll()
+    {
+        RemoveAlternateMaterials();
+        ResetElements();
+        ResetManager();
+    }
 
     // TODO: everything
     public static void BackgroundElementsInfo()
