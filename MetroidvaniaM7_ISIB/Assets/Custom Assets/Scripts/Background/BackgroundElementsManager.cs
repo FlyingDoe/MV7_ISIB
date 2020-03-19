@@ -48,8 +48,102 @@ public static class BackgroundElementsManager
         InitializeAllElements();
     }
 
+    /// <summary>
+    /// randomize background elements' pretty look
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/RandomizeBackground", false, 0)]
+    public static void RandomizeBackground()
+    {
+        BackgroundTypes currentType;
+        int meshNumber;
+        int matNumber;
+        foreach (BackgroundElement element in BgElements)
+        {
+            // start showing pretty background elements
+            element.ActivatePrettyBackground();
 
-    [MenuItem("CustomScripts/BackgroundElements/More/InitializeManager", false, 200)]
+            if (element.IsAspectLocked)
+            {
+                continue;
+            }
+
+            currentType = element.GetBackgroundType();
+            // choose random mesh
+            meshNumber = Random.Range(0, BgParameters[currentType].Meshes.Count);
+            element.ChangeMesh(BgParameters[currentType].Meshes[meshNumber]);
+            // choose random material
+            matNumber = Random.Range(0, BgParameters[currentType].NewMaterials.Count);
+            element.ChangeMat(BgParameters[currentType].NewMaterials[matNumber]);
+
+            if (element.IsRotationLocked)
+            {
+                continue;
+            }
+            // if allowed, choose random rotation
+            switch (BgParameters[currentType].RotationalAbility)
+            {
+                case RotationalAbility.None:
+                    break;
+                case RotationalAbility.By180Degrees:
+                    element.ChangeRotation(RandomRotationValue(180));
+                    break;
+                case RotationalAbility.By90Degrees:
+                    element.ChangeRotation(RandomRotationValue(90));
+                    break;
+                case RotationalAbility.By30Degrees:
+                    element.ChangeRotation(RandomRotationValue(30));
+                    break;
+                case RotationalAbility.Anything:
+                    element.ChangeRotation(RandomRotationValue(1));
+                    break;
+            }
+
+            // choose random scale
+            if (BgParameters[currentType].Scalability != 0)
+            {
+                element.ChangeScale(Random.Range(-BgParameters[currentType].Scalability / 100, BgParameters[currentType].Scalability / 100));
+            }
+        }
+    }
+
+    /// <summary>
+    /// switch between geometric and pretty views
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/Switch view", false, 0)]
+    public static void SwitchView()
+    {
+        foreach (BackgroundElement element in BgElements)
+        {
+            element.ActivatePrettyBackground(!element.CheckPrettyState());
+        }
+    }
+
+    // TODO: add a confirmation window
+    [MenuItem("CustomScripts/BackgroundElements/Reset All", false, 0)]
+    public static void ResetAll()
+    {
+        RemoveAlternateMaterials();
+        ResetElements();
+        ResetManager();
+    }
+
+    // TODO: everything
+    [MenuItem("CustomScripts/BackgroundElements/Information", false, 0)]
+    public static void BackgroundElementsInfo()
+    {
+        // has manager been initialized? when?
+        // if so, which types does it know?
+        // have elements been initialized? when? how many?
+        // have elements been randomized? When? how many?
+        // number of geometric elements?
+        // number of pretty elements?
+        // some mini-tuto shoud be available here.
+    }
+
+    /// <summary>
+    /// update a list of all different background types available
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/More/InitializeManager", false, 1)]
     public static void InitializeManager()
     {
         BackgroundType[] types = Resources.FindObjectsOfTypeAll<BackgroundType>();
@@ -128,17 +222,19 @@ public static class BackgroundElementsManager
         }
     }
 
-    [MenuItem("CustomScripts/BackgroundElements/More/Find All Elements", false, 200)]
+    /// <summary>
+    /// update list of background elements present in the scene
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/More/Find All Elements", false, 1)]
     public static void FindAllElements()
     {
         BgElements = Resources.FindObjectsOfTypeAll<BackgroundElement>();
     }
 
     /// <summary> 
-    /// get a list of all background elements in the scene
-    /// and initialize them
+    /// initialize all background elements found so that they find the components they need to work
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/More/Initialize Elements", false, 200)]
+    [MenuItem("CustomScripts/BackgroundElements/More/Initialize Elements", false, 1)]
     public static void InitializeAllElements()
     {
         foreach (BackgroundElement element in BgElements)
@@ -157,81 +253,9 @@ public static class BackgroundElementsManager
     }
 
     /// <summary>
-    /// randomize background elements' pretty look
-    /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/RandomizeBackground", false, 50)]
-    public static void RandomizeBackground()
-    {
-        BackgroundTypes currentType;
-        int meshNumber;
-        int matNumber;
-        foreach (BackgroundElement element in BgElements)
-        {
-            // start showing pretty background elements
-            element.ActivatePrettyBackground();
-
-            if (element.IsAspectLocked)
-            {
-                continue;
-            }
-
-            currentType = element.GetBackgroundType();
-            // choose random mesh
-            meshNumber = Random.Range(0, BgParameters[currentType].Meshes.Count);
-            element.ChangeMesh(BgParameters[currentType].Meshes[meshNumber]);
-            // choose random material
-            matNumber = Random.Range(0, BgParameters[currentType].NewMaterials.Count);
-            element.ChangeMat(BgParameters[currentType].NewMaterials[matNumber]);
-
-            if (element.IsRotationLocked)
-            {
-                continue;
-            }
-            // if allowed, choose random rotation
-            switch (BgParameters[currentType].RotationalAbility)
-            {
-                case RotationalAbility.None:
-                    break;
-                case RotationalAbility.By180Degrees:
-                    element.ChangeRotation(RandomRotationValue(180));
-                    break;
-                case RotationalAbility.By90Degrees:
-                    element.ChangeRotation(RandomRotationValue(90));
-                    break;
-                case RotationalAbility.By30Degrees:
-                    element.ChangeRotation(RandomRotationValue(30));
-                    break;
-                case RotationalAbility.Anything:
-                    element.ChangeRotation(RandomRotationValue(1));
-                    break;
-            }
-
-            // choose random scale
-            if (BgParameters[currentType].Scalability != 0)
-            {
-                element.ChangeScale(Random.Range(-BgParameters[currentType].Scalability/100, BgParameters[currentType].Scalability/100));
-            }
-        }
-    }
-
-
-    /// <summary>
-    /// switch between geometric and pretty views
-    /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/Switch view", false, 50)]
-    public static void SwitchView()
-    {
-        foreach (BackgroundElement element in BgElements)
-        {
-            element.ActivatePrettyBackground(!element.CheckPrettyState());
-        }
-    }
-
-
-    /// <summary>
     /// reset meshes to simple geometric ones
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/More/Reset Background", false, 200)]
+    [MenuItem("CustomScripts/BackgroundElements/More/Reset Background", false, 50)]
     public static void ResetElements()
     {
         foreach (BackgroundElement element in BgElements)
@@ -240,7 +264,10 @@ public static class BackgroundElementsManager
         }
     }
 
-    [MenuItem("CustomScripts/BackgroundElements/More/Remove Alternate Materials", false, 200)]
+    /// <summary>
+    /// remove alternate materials created to have several different texture offsets
+    /// </summary>
+    [MenuItem("CustomScripts/BackgroundElements/More/Remove Alternate Materials", false, 50)]
     public static void RemoveAlternateMaterials()
     {
         foreach(string path in AlternateMaterialsFoldersPaths)
@@ -258,31 +285,10 @@ public static class BackgroundElementsManager
     /// <summary>
     /// reset manager's types list and each type info to default empty state
     /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/More/ResetManager", false, 200)]
+    [MenuItem("CustomScripts/BackgroundElements/More/ResetManager", false, 50)]
     public static void ResetManager()
     {
-        //TODO: add a warning that ResetElems should be done before this one
-        // because it loses the connections they need
         BgParameters.Clear();
-    }
-
-    [MenuItem("CustomScripts/BackgroundElements/Reset All", false, 50)]
-    public static void ResetAll()
-    {
-        RemoveAlternateMaterials();
-        ResetElements();
-        ResetManager();
-    }
-
-    // TODO: everything
-    public static void BackgroundElementsInfo()
-    {
-        // has manager been initialized? when?
-        // if so, which types does it know?
-        // have elements been initialized? when? how many?
-        // have elements been randomized? When? how many?
-        // number of geometric elements?
-        // number of pretty elements?
     }
 
     // TODO: progress bar
