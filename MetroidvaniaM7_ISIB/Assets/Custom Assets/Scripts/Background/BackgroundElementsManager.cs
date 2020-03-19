@@ -15,6 +15,8 @@ public static class BackgroundElementsManager
 
     //put this someplace else?
     public static string AlternativeMaterialsFolderName = "alternativeVersions";
+    public static List<string> AlternateMaterialsFoldersPaths = new List<string>();
+    public static char CorrectSeparator;
 
     public static bool isDebugging = false;
 
@@ -48,22 +50,31 @@ public static class BackgroundElementsManager
         Vector2 tiling;
         Material newMat;
         string matPath;
+        string matFolder;
         foreach(BackgroundType type in BgParameters.Values)
         {
             // we find the folder containing the materials
             // and create a subfolder for the variations
             matPath = AssetDatabase.GetAssetPath(type.Materials[0]);
             // TODO: put this someplace else: the correct separator is everyone's business
-            char correctSeparator = matPath.LastIndexOf(Path.DirectorySeparatorChar) > 0 ? Path.DirectorySeparatorChar : Path.AltDirectorySeparatorChar;
-            int lastSlash = matPath.LastIndexOf(correctSeparator);
+            CorrectSeparator = matPath.LastIndexOf(Path.DirectorySeparatorChar) > 0 ? Path.DirectorySeparatorChar : Path.AltDirectorySeparatorChar;
+            int lastSlash = matPath.LastIndexOf(CorrectSeparator);
             matPath = matPath.Remove(lastSlash);
-            if(!AssetDatabase.IsValidFolder(matPath + correctSeparator + AlternativeMaterialsFolderName))
+            matFolder = matPath + CorrectSeparator + AlternativeMaterialsFolderName;
+            if (!AssetDatabase.IsValidFolder(matFolder))
             {
                 AssetDatabase.CreateFolder(matPath, AlternativeMaterialsFolderName);
+
                 if (isDebugging)
                 {
-                    Debug.Log("creating folder at " + matPath + correctSeparator + AlternativeMaterialsFolderName);
+                    Debug.Log("creating folder at " + matFolder);
                 }
+            }
+            // for cleaning up purposes later
+            if (!AlternateMaterialsFoldersPaths.Contains(matFolder))
+            {
+                Debug.Log("adding path " + matFolder);
+                AlternateMaterialsFoldersPaths.Add(matFolder);
             }
 
             if (type.NewMaterials == null || type.NewMaterials.Count == 0)
@@ -79,7 +90,7 @@ public static class BackgroundElementsManager
                         {
                             mainTextureOffset = new Vector2(Random.Range((float)0, (float)1), Random.Range((float)0, (float)1))
                         };
-                        AssetDatabase.CreateAsset(newMat, matPath + correctSeparator + AlternativeMaterialsFolderName + correctSeparator + (mat.name + "_" + type.name + "_v" + i + ".mat"));
+                        AssetDatabase.CreateAsset(newMat, matPath + CorrectSeparator + AlternativeMaterialsFolderName + CorrectSeparator + (mat.name + "_" + type.name + "_v" + i + ".mat"));
                         type.NewMaterials.Add(newMat);
                         if (isDebugging)
                         {
@@ -188,19 +199,23 @@ public static class BackgroundElementsManager
         }
     }
 
-    /// <summary>
-    /// reset manager's types list and each type info to default empty state
-    /// </summary>
-    [MenuItem("CustomScripts/BackgroundElements/ResetManager", false, 99)]
-    public static void ResetManager()
+    [MenuItem("CustomScripts/BackgroundElements/More/Remove Alternate Materials", false, 200)]
+    public static void RemoveAlternateMaterials()
     {
+        foreach(string path in AlternateMaterialsFoldersPaths)
+        {
+            foreach(string file in Directory.GetFiles(path))
+            {
+                AssetDatabase.DeleteAsset(file);
+            }
+            // removing folder only takes effect after you switched 
+            // the focus from unity and back
+            Directory.Delete(path);
+        }
+        AlternateMaterialsFoldersPaths.Clear();
         foreach (BackgroundType type in BgParameters.Values)
         {
             type.NewMaterials.Clear();
-            if (isDebugging)
-            {
-                Debug.Log("reset " + type.name + ": done!");
-            }
         }
         BgParameters.Clear();
     }
