@@ -245,14 +245,9 @@ public static class BackgroundElementsManager
     {
         foreach(string path in AlternateMaterialsFoldersPaths)
         {
-            foreach(string file in Directory.GetFiles(path))
-            {
-                AssetDatabase.DeleteAsset(file);
-            }
-            // removing folder only takes effect after you switched 
-            // the focus from unity and back
-            Directory.Delete(path);
+            Directory.Delete(path, true);
         }
+        AssetDatabase.Refresh();
         AlternateMaterialsFoldersPaths.Clear();
         foreach (BackgroundType type in BgParameters.Values)
         {
