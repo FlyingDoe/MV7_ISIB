@@ -16,6 +16,7 @@ public class BackgroundType: ScriptableObject
     public int Scalability;
     public List<Mesh> Meshes;
     public List<Material> Materials;
+    [Tooltip("Different versions of the materials created through script")]
     public List<Material> NewMaterials;
     public Vector2 TextureTiling;
     public bool CanCollide;
