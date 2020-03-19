@@ -59,11 +59,14 @@ public class BackgroundElement : MonoBehaviour
     /// find all the background element's components;
     /// if already did it, automatically skips it
     /// </summary>
-    public void Initialize()
+    public void Initialize(bool verbose = true)
     {
-        if(_placeholder != null && _prettyBg != null && _prettyMesh != null && _prettyCollider != null && _prettyRenderer != null)
+        if(_placeholder != null && _prettyBg != null && _prettyMesh != null && _prettyRenderer != null)
         {
-            Debug.Log("Trying to get components for the background element of " + gameObject.name + " but it's already been done before.");
+            if (verbose)
+            {
+                Debug.Log("Trying to get components for the background element of " + gameObject.name + " but it's already been done before.");
+            }
             return;
         }
 
@@ -104,9 +107,9 @@ public class BackgroundElement : MonoBehaviour
     {
         _prettyMesh.mesh = mesh;
         // set _prettyCollider if it's a mesh collider
-        if ((MeshCollider) _prettyCollider != null)
+        if (_prettyCollider as MeshCollider != null)
         {
-            ((MeshCollider)_prettyCollider).sharedMesh = mesh;
+            (_prettyCollider as MeshCollider).sharedMesh = mesh;
         }
     }
 
@@ -185,5 +188,9 @@ public class BackgroundElement : MonoBehaviour
     public void Reset()
     {
         ActivatePrettyBackground(false);
+        ChangeRotation(0);
+        ChangeScale(0);
+        _isAspectLocked = false;
+        _isRotationScaleLocked = false;
     }
 }

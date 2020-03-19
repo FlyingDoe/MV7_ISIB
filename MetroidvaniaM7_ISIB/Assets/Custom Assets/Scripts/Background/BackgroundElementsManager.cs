@@ -7,7 +7,7 @@ using System.IO;
 // documentation on creating menu items: https://blog.redbluegames.com/guide-to-extending-unity-editors-menus-b2de47a746db
 // documentation on creating buttons in editor scripts: https://learn.unity.com/tutorial/editor-scripting?language=en#5c7f8528edbc2a002053b5f8
 
-public class BackgroundElementsManager
+public static class BackgroundElementsManager
 {
     public static BackgroundElement[] BgElements;
 
@@ -16,7 +16,7 @@ public class BackgroundElementsManager
     //put this someplace else?
     public static string AlternativeMaterialsFolderName = "alternativeVersions";
 
-    public static bool isDebugging = true;
+    public static bool isDebugging = false;
 
     // to create a new type of background:
     // - create a new background type in the BackgroundTypes enum
@@ -29,11 +29,6 @@ public class BackgroundElementsManager
     public static void InitializeManager()
     {
         BackgroundType[] types = Resources.FindObjectsOfTypeAll<BackgroundType>();
-        if (isDebugging)
-        {
-            Debug.Log("types count: " + types.Length);
-            Debug.Log("bgParams length: " + BgParameters.Count);
-        }
         foreach (BackgroundType type in types)
         {
             if (!BgParameters.ContainsValue(type))
@@ -110,7 +105,7 @@ public class BackgroundElementsManager
         BgElements = Resources.FindObjectsOfTypeAll<BackgroundElement>();
         foreach (BackgroundElement element in BgElements)
         {
-            element.Initialize();
+            element.Initialize(verbose: false);
 
             if(element.GetBackgroundType() == BackgroundTypes.ObstaclePlatform)
             {
