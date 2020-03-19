@@ -120,6 +120,9 @@ namespace BackgroundElementsManager
         }
 
         // TODO: add a confirmation window
+        // TODO: add a way to have some background elements imprevious to reset
+        // (we can simply disable the lock disabling on reset, but we need a way
+        // to not remove their materials)
         [MenuItem("CustomScripts/BackgroundElements/Reset All", false, 0)]
         public static void ResetAll()
         {
@@ -148,6 +151,10 @@ namespace BackgroundElementsManager
         public static void InitializeManager()
         {
             BackgroundType[] types = Resources.FindObjectsOfTypeAll<BackgroundType>();
+            if (isDebugging)
+            {
+                Debug.Log("number of types: " + types.Length);
+            }
             foreach (BackgroundType type in types)
             {
                 if (!BgParameters.ContainsValue(type))
@@ -179,6 +186,11 @@ namespace BackgroundElementsManager
                 {
                     // we find the folder containing the materials
                     // and create a subfolder for the variations
+                    if(type.Materials == null || type.Materials.Count == 0)
+                    {
+                        Debug.LogError("You forgot to add materials to the element type " + type.Type + "!");
+                        continue;
+                    }
                     matPath = AssetDatabase.GetAssetPath(type.Materials[0]);
                     // TODO: put this someplace else: the correct separator is everyone's business
                     CorrectSeparator = matPath.LastIndexOf(Path.DirectorySeparatorChar) > 0 ? Path.DirectorySeparatorChar : Path.AltDirectorySeparatorChar;
@@ -218,6 +230,8 @@ namespace BackgroundElementsManager
                                 Debug.Log("added material " + newMat + " to the list.");
                             }
                         }
+                        //and then reset it so as not to commit useless stuff each time you make one small change
+                        mat.mainTextureScale = Vector2.one;
                     }
                     if (isDebugging)
                     {
